@@ -2,17 +2,20 @@
 
 #include "Player.h"
 #include "Enemy.h"
+#include "Input.h"
 
 
 class GameScene
 {
-public:
-	void Initialize();
-	void Update();
-	void Draw();
-private:
-	// シーン
-	int scene = 0;
+public:	// メンバ関数
+	void Initialize();	// 更新
+	void Update();		// 更新
+	void Draw();		// 描画
+private: // メンバ変数
+	// シーン切り替え
+	int scene = 1;
+
+
 	int titleX = 0;
 	int titleY = 0;
 	int gameOverX = 0;
@@ -54,7 +57,12 @@ private:
 	int titleBgmFlag = 0;
 	int playBgmFlag = 0;
 
+	// キーボード変数
+	char key[256] = { 0 }; //最新のキーボード情報用
+	char oldkey[256] = { 0 };//1ループ（フレーム）前のキーボード情報
+
 
 	Player* player;
 	Enemy* enemy;
+	Input* input;
 };

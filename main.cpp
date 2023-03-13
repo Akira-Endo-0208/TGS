@@ -2,7 +2,7 @@
 #include "GameScene.h"
 
 
-const char TITLE[] = "test";
+const char TITLE[] = "3161_test";
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -17,13 +17,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	if (DxLib_Init() == -1)return -1;				// DxLib 初期化処理
 	SetDrawScreen(DX_SCREEN_BACK);					// 描画先画面を裏画面にセット
 
-	// 画像などのリソースデータの変数宣言と読み込み
-
-
-	//ゲームループで使う変数の宣言
-	char key[256] = { 0 }; //最新のキーボード情報用
-	char oldkey[256] = { 0 };//1ループ（フレーム）前のキーボード情報
-
 	GameScene* gameScene = nullptr;
 	gameScene = new GameScene();
 
@@ -33,15 +26,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// ゲームループ
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
 	{
-		//最新のキーボード情報だったものは１フレーム前のキーボード情報として保存
-		for (int i = 0; i < 256; i++)
-		{
-			oldkey[i] = key[i];
-		}
-
-		//最新のキーボード情報を取得
-		GetHitKeyStateAll(key);
-
 		// 更新
 		gameScene->Update();
 

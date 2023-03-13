@@ -6,6 +6,13 @@
 // 初期化
 void GameScene::Initialize()
 {
+	player = new Player();
+	enemy = new Enemy();
+	input = new Input();
+
+	player->playerInitialize();
+	enemy->enemyInitialize();
+
 	// 乱数の初期化
 	srand(time(NULL));
 }
@@ -13,11 +20,16 @@ void GameScene::Initialize()
 // 更新
 void GameScene::Update()
 {
+	input->SaveoldKey();
+	GetHitKeyStateAll(key);
+
 	switch (scene)
 	{
 	case 0:	// タイトル
 		break;
 	case 1:	// ゲーム画面
+		player->playerUpdate();
+		enemy->enemyUpdate();
 		break;
 	case 2:	// チュートリアル
 		break;
@@ -36,6 +48,8 @@ void GameScene::Draw()
 	case 0:	// タイトル
 		break;
 	case 1:	// ゲーム画面
+		player->playerDraw();
+		enemy->enemyDraw();
 		break;
 	case 2:	// チュートリアル
 		break;
