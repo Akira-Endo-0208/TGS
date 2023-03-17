@@ -3,61 +3,65 @@
 #include <time.h>
 
 
-// ‰Šú‰»
+// åˆæœŸåŒ–
 void GameScene::Initialize()
 {
 	player = new Player();
 	enemy = new Enemy();
+	collision = new Collision();
 	input = new Input();
 
-	player->playerInitialize();
+	player->playerInitialize(input);
 	enemy->enemyInitialize();
+	collision->collisionInitialize(player, enemy);
 
-	// —”‚Ì‰Šú‰»
+	// ä¹±æ•°ã®åˆæœŸåŒ–
 	srand(time(NULL));
 }
 
-// XV
+// æ›´æ–°
 void GameScene::Update()
 {
-	input->SaveoldKey();
-	GetHitKeyStateAll(key);
-
 	switch (scene)
 	{
-	case 0:	// ƒ^ƒCƒgƒ‹
+	case 0:	// ã‚¿ã‚¤ãƒˆãƒ«
 		break;
-	case 1:	// ƒQ[ƒ€‰æ–Ê
+	case 1:	// ã‚²ãƒ¼ãƒ ç”»é¢
 		player->playerUpdate();
 		enemy->enemyUpdate();
+		collision->collisionUpdate();
 		break;
-	case 2:	// ƒ`ƒ…[ƒgƒŠƒAƒ‹
+	case 2:	// ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
 		break;
-	case 3:	// ƒQ[ƒ€ƒI[ƒo[
+	case 3:	// ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼
 		break;
-	case 4:	// ƒQ[ƒ€ƒNƒŠƒA
+	case 4:	// ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢
 		break;
 	}
 }
 
-// •`‰æ
+// æç”»
 void GameScene::Draw()
 {
 	switch (scene)
 	{
-	case 0:	// ƒ^ƒCƒgƒ‹
+	case 0:	// ã‚¿ã‚¤ãƒˆãƒ«
 		break;
-	case 1:	// ƒQ[ƒ€‰æ–Ê
+	case 1:	// ã‚²ãƒ¼ãƒ ç”»é¢
 		
 		player->playerDraw();
 		enemy->enemyDraw();
-		
+
+		DrawFormatString(0, 0, GetColor(255, 255, 255), "SPACE             ã‚¸ãƒ£ãƒ³ãƒ—");
+		DrawFormatString(0, 20, GetColor(255, 255, 255), "ã‚¸ãƒ£ãƒ³ãƒ—ä¸­ã«SPACE  2æ®µã‚¸ãƒ£ãƒ³ãƒ—");
+		DrawFormatString(0, 40, GetColor(255, 255, 255), "S                 ã‚¹ãƒ©ã‚¤ãƒ‡ã‚£ãƒ³ã‚°");
+
 		break;
-	case 2:	// ƒ`ƒ…[ƒgƒŠƒAƒ‹
+	case 2:	// ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
 		break;
-	case 3:	// ƒQ[ƒ€ƒI[ƒo[
+	case 3:	// ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼
 		break;
-	case 4:	// ƒQ[ƒ€ƒNƒŠƒA
+	case 4:	// ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢
 		break;
 	}
 }
