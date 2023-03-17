@@ -6,7 +6,7 @@ class Input
 public:	// メンバ関数
 	//最新のキーボード情報だったものは１フレーム前のキーボード情報として保存
 	void SaveoldKey(){
-		for (int i = 0; i < 256; i++)
+		for (int i = 0; i < 256; ++i)
 		{
 			oldkey[i] = key[i];
 		}

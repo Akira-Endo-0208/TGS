@@ -8,10 +8,12 @@ void GameScene::Initialize()
 {
 	player = new Player();
 	enemy = new Enemy();
+	collision = new Collision();
 	input = new Input();
 
-	player->playerInitialize();
+	player->playerInitialize(input);
 	enemy->enemyInitialize();
+	collision->collisionInitialize(player, enemy);
 
 	// 乱数の初期化
 	srand(time(NULL));
@@ -20,9 +22,6 @@ void GameScene::Initialize()
 // 更新
 void GameScene::Update()
 {
-	input->SaveoldKey();
-	GetHitKeyStateAll(key);
-
 	switch (scene)
 	{
 	case 0:	// タイトル
@@ -30,6 +29,7 @@ void GameScene::Update()
 	case 1:	// ゲーム画面
 		player->playerUpdate();
 		enemy->enemyUpdate();
+		collision->collisionUpdate();
 		break;
 	case 2:	// チュートリアル
 		break;
@@ -50,6 +50,9 @@ void GameScene::Draw()
 	case 1:	// ゲーム画面
 		player->playerDraw();
 		enemy->enemyDraw();
+		DrawFormatString(0, 0, GetColor(255, 255, 255), "SPACE             ジャンプ");
+		DrawFormatString(0, 20, GetColor(255, 255, 255), "ジャンプ中にSPACE  2段ジャンプ");
+		DrawFormatString(0, 40, GetColor(255, 255, 255), "S                 スライディング");
 		break;
 	case 2:	// チュートリアル
 		break;

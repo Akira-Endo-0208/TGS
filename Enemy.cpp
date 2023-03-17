@@ -34,7 +34,7 @@ void Enemy::enemyMove()
 	{
 		if (enemy1Flag[i] == 1)
 		{
-			enemy1X[i] -= 1.5;
+			enemy1X[i] -= 4.0;
 		}
 		if (enemy1X[i] <= 0)
 		{
