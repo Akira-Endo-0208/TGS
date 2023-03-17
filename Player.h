@@ -12,11 +12,14 @@ public:	// メンバ関数
 	void playerReset();			// リセット
 private: // メンバ変数
 	// プレイヤー変数
-	int playerX = 500;		// X軸
-	int playerY = 300;		// Y軸
-	int playerR = 15;		// 半径
-	int playerSpeed = 7;	// スピード値
-	int playerFlag = 1;		// 生存フラグ
+	float playerX = 500;		// X軸
+	float playerY = 300;		// Y軸
+	int playerR = 20;			// 半径
+	float playerFallSpeed = 1;	// 落下スピード値
+	float playerJumpSpeed = 10;	// ジャンプスピード値
+	int playerJumpTime = 60;	// ジャンプ時間
+	int playerJumpFlag = 1;		// ジャンプフラグ
+	int playerFlag = 1;			// 生存フラグ
 	int playerGraph = LoadGraph("Resources/Player1.png"); // 画像
 
 	// キーボード変数
