@@ -2,6 +2,7 @@
 #include "Input.h"
 
 
+
 class Player
 {
 public:	// メンバ関数
@@ -12,13 +13,19 @@ public:	// メンバ関数
 	void playerReset();			// リセット
 private: // メンバ変数
 	// プレイヤー変数
-	int playerX = 500;		// X軸
+	int playerX = 0;		// X軸
 	int playerY = 500;		// Y軸
 	int playerR = 15;		// 半径
-	int playerSpeed = 7;	// スピード値
+	int playerSpeed = 10;	// スピード値
 	int playerFlag = 1;		// 生存フラグ
 	int playerGraph = LoadGraph("Resources/Player1.png"); // 画像
+	int backGroundGraph = LoadGraph("Resources/backGround.png");
 
+	int playerScreenX = 0;	//プレイヤーのモニター座標
+	int playerScreenY = 0;	//現在は使用していない
+
+	int scrollX = 0;	//移動量の記憶
+	int scrollY = 0;	//現在は使用していない
 	int gravity_ = 0;
 	int accel_ = 1;
 	int canJump = 0;

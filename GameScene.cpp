@@ -48,8 +48,10 @@ void GameScene::Draw()
 	case 0:	// タイトル
 		break;
 	case 1:	// ゲーム画面
+		
 		player->playerDraw();
 		enemy->enemyDraw();
+		
 		break;
 	case 2:	// チュートリアル
 		break;
