@@ -11,11 +11,17 @@ void Player::playerInitialize()
 // 更新
 void Player::playerUpdate()
 {
+	for (int i = 0; i < 256; ++i)
+	{
+		oldkey[i] = key[i];
+	}
+
 	GetHitKeyStateAll(key);
 
 	if (playerFlag == 1)
 	{
 		playerMove();
+		
 	}
 }
 
@@ -31,35 +37,32 @@ void Player::playerDraw()
 // 動作
 void Player::playerMove()
 {
-	// 重力
-	if (playerY < 500)
+	
+		
+	if (playerX >= 32 && key[KEY_INPUT_A] == 1)
 	{
-		playerY += playerFallSpeed;
-		playerFallSpeed += 0.1;
-	} else {
-		playerFallSpeed = 1;
-		playerJumpFlag = 1;
+		playerX--;
 	}
-	// スライディング
-	if (playerY >= 500 && key[KEY_INPUT_S] == 1)
+
+	if (playerY <= 500 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && canJump < 2)
 	{
-		playerR = 5;
-	} else {
-		playerR = 20;
+		canJump++;
+		gravity_ = -20;
 	}
-	// ジャンプ
-	if (playerJumpFlag == 1 && key[KEY_INPUT_SPACE] == 1 && playerJumpTime >= 0)
+
+	if (canJump < 3)
 	{
-		playerY -= playerJumpSpeed;
-		playerJumpSpeed -= 0.1;
-		playerJumpTime--;
+		gravity_ += accel_;
+		playerY += gravity_;
 	}
-	else if (playerJumpTime == 0 || key[KEY_INPUT_SPACE] == 0)
+
+	if (playerY >= 500)
 	{
-		playerJumpSpeed = 10;
-		playerJumpFlag = 0;
-		playerJumpTime = 60;
+		playerY = 500;
+		gravity_ = 0;
+		canJump = 0;
 	}
+	
 }
 
 // リセット
