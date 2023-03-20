@@ -3,7 +3,7 @@
 #include <time.h>
 
 
-// ‰Šú‰»
+// åˆæœŸåŒ–
 void GameScene::Initialize()
 {
 	player = new Player();
@@ -17,30 +17,30 @@ void GameScene::Initialize()
 	collision->collisionInitialize(player, enemy);
 	//otherScene->OtherSceneInitialize();
 
-	// —”‚Ì‰Šú‰»
+	// ä¹±æ•°ã®åˆæœŸåŒ–
 	srand(time(NULL));
 }
 
-// XV
+// æ›´æ–°
 void GameScene::Update()
 {
 	switch (scene)
 	{
-	case 0:	// ƒ^ƒCƒgƒ‹
+	case 0:	// ã‚¿ã‚¤ãƒˆãƒ«
 		//otherScene->OtherSceneUpdate();
 		break;
-	case 1:	// ƒQ[ƒ€ƒI[ƒo[
+	case 1:	// ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼
 		//otherScene->OtherSceneUpdate();
 		break;
-	case 2:	// ƒQ[ƒ€ƒNƒŠƒA
+	case 2:	// ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢
 		//otherScene->OtherSceneUpdate();
 		break;
-	case 3:	// ƒ`ƒ…[ƒgƒŠƒAƒ‹
+	case 3:	// ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
 		player->playerUpdate();
 		enemy->enemyUpdate();
 		collision->collisionUpdate();
 		break;
-	case 4:	// ƒQ[ƒ€‰æ–Ê
+	case 4:	// ã‚²ãƒ¼ãƒ ç”»é¢
 		player->playerUpdate();
 		enemy->enemyUpdate();
 		collision->collisionUpdate();
@@ -48,34 +48,36 @@ void GameScene::Update()
 	}
 }
 
-// •`‰æ
+// æç”»
 void GameScene::Draw()
 {
 	switch (scene)
 	{
-	case 0:	// ƒ^ƒCƒgƒ‹
+	case 0:	// ã‚¿ã‚¤ãƒˆãƒ«
 		//otherScene->OtherSceneDraw();
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "ƒ^ƒCƒgƒ‹   SPACE->ƒQ[ƒ€‰æ–Ê");
+		DrawFormatString(0, 0, GetColor(255, 255, 255), "ã‚¿ã‚¤ãƒˆãƒ«   SPACE->ã‚²ãƒ¼ãƒ ç”»é¢");
 		break;
-	case 1:	// ƒQ[ƒ€ƒI[ƒo[
+	case 1:	// ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼
 		//otherScene->OtherSceneDraw();
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "ƒQ[ƒ€ƒI[ƒo[   SPACE->ƒ^ƒCƒgƒ‹");
+		DrawFormatString(0, 0, GetColor(255, 255, 255), "ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼   SPACE->ã‚¿ã‚¤ãƒˆãƒ«");
 		break;
-	case 2:	// ƒQ[ƒ€ƒNƒŠƒA
+	case 2:	// ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢
 		//otherScene->OtherSceneDraw();
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "ƒQ[ƒ€ƒNƒŠƒA  SPACE->ƒ^ƒCƒgƒ‹");
+		DrawFormatString(0, 0, GetColor(255, 255, 255), "ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢  SPACE->ã‚¿ã‚¤ãƒˆãƒ«");
 		break;
-	case 3:	// ƒ`ƒ…[ƒgƒŠƒAƒ‹
+	case 3:	// ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
 		player->playerDraw();
 		enemy->enemyDraw();
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "ƒ`ƒ…[ƒgƒŠƒAƒ‹   SPACE->ƒQ[ƒ€‰æ–Ê");
+		DrawFormatString(0, 0, GetColor(255, 255, 255), "ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«   SPACE->ã‚²ãƒ¼ãƒ ç”»é¢");
 		break;
-	case 4:	// ƒQ[ƒ€‰æ–Ê
+	case 4:	// ã‚²ãƒ¼ãƒ ç”»é¢
 		player->playerDraw();
 		enemy->enemyDraw();
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "SPACE             ƒWƒƒƒ“ƒv");
-		DrawFormatString(0, 20, GetColor(255, 255, 255), "ƒWƒƒƒ“ƒv’†‚ÉSPACE  2’iƒWƒƒƒ“ƒv");
-		DrawFormatString(0, 40, GetColor(255, 255, 255), "S                 ƒXƒ‰ƒCƒfƒBƒ“ƒO");
+
+		DrawFormatString(0, 0, GetColor(255, 255, 255), "SPACE             ã‚¸ãƒ£ãƒ³ãƒ—");
+		DrawFormatString(0, 20, GetColor(255, 255, 255), "ã‚¸ãƒ£ãƒ³ãƒ—ä¸­ã«SPACE  2æ®µã‚¸ãƒ£ãƒ³ãƒ—");
+		DrawFormatString(0, 40, GetColor(255, 255, 255), "S                 ã‚¹ãƒ©ã‚¤ãƒ‡ã‚£ãƒ³ã‚°");
+
 		break;
 	}
 }
