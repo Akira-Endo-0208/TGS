@@ -2,13 +2,13 @@
 #include "Player.h"
 
 
-// ‰Šú‰»
+// åˆæœŸåŒ–
 void Player::playerInitialize(Input* input_)
 {
 	input = input_;
 }
 
-// XV
+// æ›´æ–°
 void Player::playerUpdate()
 {
 	for (int i = 0; i < 256; ++i)
@@ -24,19 +24,68 @@ void Player::playerUpdate()
 	}
 }
 
-// •`‰æ
+// æç”»
 void Player::playerDraw()
 {
+	DrawGraph(scrollX, 0, backGroundGraph, TRUE);
+
 	if (playerFlag == 1)
 	{
-		DrawCircle(playerX, playerY, playerR, GetColor(255, 255, 255));
+		DrawCircle(playerScreenX, playerY, playerR, GetColor(255, 255, 255));
 	}
+	DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", playerScreenX);
+	DrawFormatString(0, 20, GetColor(255, 255, 255), "%d", scrollX);
+	DrawFormatString(0, 40, GetColor(255, 255, 255), "%d", playerX);
+	
 }
 
-// “®ì
+// å‹•ä½œ
 void Player::playerMove()
 {
+#pragma region ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ç§»å‹•(å‹•ä½œç¢ºèªã®ç‚º)
+
+	if (key[KEY_INPUT_D])
+	{
+		
+			playerX += playerSpeed;
+
+		if (playerX > 1280 / 2 && playerX <= 1920)
+		{
+			scrollX += playerSpeed;
+
+		}
+
+		
+
+	}
+
+	if (key[KEY_INPUT_A])
+	{
+		
+			playerX -= playerSpeed;
+
+		if (playerX < 1920 && playerX >= 640)
+		{
+			scrollX -= playerSpeed;
+			
+		}
+	}
+
+	if (playerX < 640)
+	{
+		scrollX = 0;
+	}
+	if (playerX > 1920)
+	{
+		scrollX = 1280;
+	}
+
+	playerScreenX = playerX - scrollX;
+
+#pragma endregion
+
 	if (playerY <= 500 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && playerCanJump < 2)
+
 	{
 		playerCanJump++;
 		playerGravity = -20;
@@ -55,7 +104,7 @@ void Player::playerMove()
 		playerCanJump = 0;
 	}
 	
-	// ƒXƒ‰ƒCƒfƒBƒ“ƒO
+	// ã‚¹ãƒ©ã‚¤ãƒ‡ã‚£ãƒ³ã‚°
 	if (playerY >= 500 && key[KEY_INPUT_S] == 1)
 	{
 		playerR = 5;
@@ -64,7 +113,7 @@ void Player::playerMove()
 	}
 }
 
-// ƒŠƒZƒbƒg
+// ãƒªã‚»ãƒƒãƒˆ
 void Player::playerReset()
 {
 
