@@ -21,7 +21,6 @@ void Player::playerUpdate()
 	if (playerFlag == 1)
 	{
 		playerMove();
-		
 	}
 }
 
@@ -29,15 +28,16 @@ void Player::playerUpdate()
 void Player::playerDraw()
 {
 	DrawGraph(scrollX, 0, backGroundGraph, TRUE);
-
 	if (playerFlag == 1)
 	{
 		DrawCircle(playerScreenX, playerY, playerR, GetColor(255, 255, 255));
 	}
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", playerScreenX);
-	DrawFormatString(0, 20, GetColor(255, 255, 255), "%d", scrollX);
-	DrawFormatString(0, 40, GetColor(255, 255, 255), "%d", playerX);
-	
+	DrawFormatString(0, 0, GetColor(255, 255, 255), "SPACE   JUMP,2JUMP");
+	DrawFormatString(0, 20, GetColor(255, 255, 255), "S       SLIDING");
+	DrawFormatString(0, 40, GetColor(255, 255, 255), "LIFE    %d", playerLife);
+	DrawFormatString(0, 60, GetColor(255, 255, 255), "%d", playerScreenX);
+	DrawFormatString(0, 80, GetColor(255, 255, 255), "%d", scrollX);
+	DrawFormatString(0, 100, GetColor(255, 255, 255), "%d", playerX);
 }
 
 // 動作
@@ -47,28 +47,19 @@ void Player::playerMove()
 
 	if (key[KEY_INPUT_D])
 	{
-		
-			playerX += playerSpeed;
-
+		playerX += playerSpeed;
 		if (playerX > 1280 / 2 && playerX <= 1920)
 		{
 			scrollX += playerSpeed;
-
 		}
-
-		
-
 	}
 
 	if (key[KEY_INPUT_A])
 	{
-		
-			playerX -= playerSpeed;
-
+		playerX -= playerSpeed;
 		if (playerX < 1920 && playerX >= 640)
 		{
 			scrollX -= playerSpeed;
-			
 		}
 	}
 
@@ -86,7 +77,6 @@ void Player::playerMove()
 #pragma endregion
 
 	if (playerY <= 500 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && playerCanJump < 2)
-
 	{
 		playerCanJump++;
 		playerGravity = -20;
@@ -117,5 +107,11 @@ void Player::playerMove()
 // リセット
 void Player::playerReset()
 {
-
+	playerX = 0;
+	playerY = 500;
+	playerFlag = 1;
+	playerLife = 3;
+	playerScreenX = 0;
+	scrollX = 0;
 } 
+
