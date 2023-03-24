@@ -51,7 +51,7 @@ void OtherScene::OtherSceneDraw()
 		break;
 	case 1: // ステージセレクト
 		DrawFormatString(0, 0, GetColor(255, 255, 255), "ステージセレクト   SPACE->ゲーム画面");
-		DrawFormatString(0, 20, GetColor(255, 255, 255), "チュートリアル->4 ゲーム画面->5");
+		DrawFormatString(0, 20, GetColor(255, 255, 255), "チュートリアル->4 ステージ1->5");
 		DrawFormatString(0, 40, GetColor(255, 255, 255), "キーA->-  キーD->+  (%d)", selectScene);
 		break;
 	case 2: // ゲームオーバー

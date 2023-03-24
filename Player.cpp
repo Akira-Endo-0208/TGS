@@ -106,7 +106,7 @@ void Player::playerMove()
 // リセット
 void Player::playerReset()
 {
-	playerX = 0;
+	playerX = 200;
 	playerY = 500;
 	playerFlag = 1;
 	playerLife = 3;

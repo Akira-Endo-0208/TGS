@@ -18,18 +18,18 @@ public:	// メンバ関数
 	int HitLife() { return playerLife -= 1; }
 private: // メンバ変数
 	// プレイヤー変数
-	int playerX = 0;		// X軸
-	int playerY = 500;		// Y軸
+	int playerX;			// X軸
+	int playerY;			// Y軸
 	int playerR = 15;		// 半径
 	int playerSpeed = 10;	// スピード値
 	int playerGravity = 0;	// 重力
 	int playerAccel = 1;	// 加速度
 	int playerCanJump = 0;	// 2段ジャンプ判定
-	int playerFlag = 1;		// 生存フラグ
-	int playerLife = 3;		// ライフ
-	int playerScreenX = 0;	//プレイヤーのモニター座標
+	int playerFlag;			// 生存フラグ
+	int playerLife;			// ライフ
+	int playerScreenX;		//プレイヤーのモニター座標
 	int playerScreenY = 0;	//現在は使用していない
-	int scrollX = 0;		//移動量の記憶
+	int scrollX;			//移動量の記憶
 	int scrollY = 0;		//現在は使用していない
 
 	// 画像
