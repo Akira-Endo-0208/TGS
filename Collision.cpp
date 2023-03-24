@@ -2,10 +2,11 @@
 #include "Collision.h"
 
 
-void Collision::collisionInitialize(Player* player_, Enemy* enemy_)
+void Collision::collisionInitialize(Player* player_, Enemy* enemy_, OtherScene* otherScene_)
 {
 	player = player_;
 	enemy = enemy_;
+	otherScene = otherScene_;
 }
 
 void Collision::collisionUpdate()
@@ -24,9 +25,13 @@ void Collision::collisionPlayerEnemy()
 			// プレイヤーと敵が当たったら
 			if (dX < player->GetplayerR() * 2 && dY < player->GetplayerR() * 2)
 			{
-				// ゲームオーバー
-				player->ResetplayerFlag();
+				player->HitLife();
 				enemy->GetenemyReset();
+				// ゲームオーバー
+				if (player->GetLife() == 0)
+				{
+					otherScene->GameOverScene();
+				}
 			}
 		}
 	}

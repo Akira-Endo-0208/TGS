@@ -10,12 +10,12 @@ void GameScene::Initialize()
 	enemy = new Enemy();
 	collision = new Collision();
 	input = new Input();
-	//otherScene = new OtherScene();
+	otherScene = new OtherScene();
 
 	player->playerInitialize(input);
 	enemy->enemyInitialize();
-	collision->collisionInitialize(player, enemy);
-	//otherScene->OtherSceneInitialize();
+	collision->collisionInitialize(player, enemy, otherScene);
+	otherScene->OtherSceneInitialize();
 
 	// 乱数の初期化
 	srand(time(NULL));
@@ -24,23 +24,27 @@ void GameScene::Initialize()
 // 更新
 void GameScene::Update()
 {
-	switch (scene)
+	switch (otherScene->GetScene())
 	{
 	case 0:	// タイトル
-		//otherScene->OtherSceneUpdate();
+		otherScene->OtherSceneUpdate();
 		break;
-	case 1:	// ゲームオーバー
-		//otherScene->OtherSceneUpdate();
+	case 1:	// ステージセレクト
+		player->playerReset();
+		otherScene->OtherSceneUpdate();
 		break;
-	case 2:	// ゲームクリア
-		//otherScene->OtherSceneUpdate();
+	case 2:	// ゲームオーバー
+		otherScene->OtherSceneUpdate();
 		break;
-	case 3:	// チュートリアル
+	case 3:	// ゲームクリア
+		otherScene->OtherSceneUpdate();
+		break;
+	case 4:	// チュートリアル
 		player->playerUpdate();
 		enemy->enemyUpdate();
 		collision->collisionUpdate();
 		break;
-	case 4:	// ゲーム画面
+	case 5:	// ゲーム画面
 		player->playerUpdate();
 		enemy->enemyUpdate();
 		collision->collisionUpdate();
@@ -51,33 +55,27 @@ void GameScene::Update()
 // 描画
 void GameScene::Draw()
 {
-	switch (scene)
+	switch (otherScene->GetScene())
 	{
 	case 0:	// タイトル
-		//otherScene->OtherSceneDraw();
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "タイトル   SPACE->ゲーム画面");
+		otherScene->OtherSceneDraw();
 		break;
-	case 1:	// ゲームオーバー
-		//otherScene->OtherSceneDraw();
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "ゲームオーバー   SPACE->タイトル");
+	case 1:	// ステージセレクト
+		otherScene->OtherSceneDraw();
 		break;
-	case 2:	// ゲームクリア
-		//otherScene->OtherSceneDraw();
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "ゲームクリア  SPACE->タイトル");
+	case 2:	// ゲームオーバー
+		otherScene->OtherSceneDraw();
 		break;
-	case 3:	// チュートリアル
+	case 3:	// ゲームクリア
+		otherScene->OtherSceneDraw();
+		break;
+	case 4:	// チュートリアル
 		player->playerDraw();
 		enemy->enemyDraw();
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "チュートリアル   SPACE->ゲーム画面");
 		break;
-	case 4:	// ゲーム画面
+	case 5:	// ゲーム画面
 		player->playerDraw();
 		enemy->enemyDraw();
-
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "SPACE             ジャンプ");
-		DrawFormatString(0, 20, GetColor(255, 255, 255), "ジャンプ中にSPACE  2段ジャンプ");
-		DrawFormatString(0, 40, GetColor(255, 255, 255), "S                 スライディング");
-
 		break;
 	}
 }
