@@ -10,14 +10,9 @@ public:
 	void Initialize(Player* _player);	// ‰Šú‰»
 	void Update();		// XV
 	void Draw();		// •`‰æ
-
-
 public:
 
-	
 private:
-
-	
 	enum MAPBLOCK
 	{
 		NONE,

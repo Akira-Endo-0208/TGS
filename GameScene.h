@@ -4,10 +4,7 @@
 #include "Enemy.h"
 #include "Collision.h"
 #include "Input.h"
-
- //追加分
 #include "Map.h"
-
 #include "OtherScene.h"
 
 
@@ -23,10 +20,6 @@ private: // メンバ変数
 	Enemy* enemy;
 	Collision* collision;
 	Input* input;
-  
- //追加分
 	Map* map;
-  
 	OtherScene* otherScene;
-
 };

@@ -38,9 +38,6 @@ void Map::Update()
 
 void Map::Draw()
 {
-	
-
-
 	for (int y = 0; y < length; y++)
 	{
 		for (int x = 0; x < width; x++)
@@ -55,9 +52,6 @@ void Map::Draw()
 					GetColor(255, 255, 255),
 					true
 				);
-			
 		}
 	}
-
-
 }
