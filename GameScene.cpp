@@ -3,63 +3,62 @@
 #include <time.h>
 
 
-// ‰Šú‰»
+// åˆæœŸåŒ–
 void GameScene::Initialize()
 {
 	player = new Player();
 	enemy = new Enemy();
+	collision = new Collision();
 	input = new Input();
 	map = new Map();
 
-	player->playerInitialize();
+	player->playerInitialize(input);
 	enemy->enemyInitialize();
 	map->Initialize(player);
 
-	// —”‚Ì‰Šú‰»
+	// ä¹±æ•°ã®åˆæœŸåŒ–
 	srand(time(NULL));
 }
 
-// XV
+// æ›´æ–°
 void GameScene::Update()
 {
-	input->SaveoldKey();
-	GetHitKeyStateAll(key);
-
 	switch (scene)
 	{
-	case 0:	// ƒ^ƒCƒgƒ‹
+	case 0:	// ã‚¿ã‚¤ãƒˆãƒ«
 		break;
-	case 1:	// ƒQ[ƒ€‰æ–Ê
+	case 1:	// ã‚²ãƒ¼ãƒ ç”»é¢
 		player->playerUpdate();
 		enemy->enemyUpdate();
+		collision->collisionUpdate();
 		break;
-	case 2:	// ƒ`ƒ…[ƒgƒŠƒAƒ‹
+	case 2:	// ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
 		break;
-	case 3:	// ƒQ[ƒ€ƒI[ƒo[
+	case 3:	// ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼
 		break;
-	case 4:	// ƒQ[ƒ€ƒNƒŠƒA
+	case 4:	// ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢
 		break;
 	}
 }
 
-// •`‰æ
+// æç”»
 void GameScene::Draw()
 {
 	switch (scene)
 	{
-	case 0:	// ƒ^ƒCƒgƒ‹
+	case 0:	// ã‚¿ã‚¤ãƒˆãƒ«
 		break;
-	case 1:	// ƒQ[ƒ€‰æ–Ê
+	case 1:	// ã‚²ãƒ¼ãƒ ç”»é¢
 		
 		player->playerDraw();
 		enemy->enemyDraw();
 		map->Draw();
 		break;
-	case 2:	// ƒ`ƒ…[ƒgƒŠƒAƒ‹
+	case 2:	// ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
 		break;
-	case 3:	// ƒQ[ƒ€ƒI[ƒo[
+	case 3:	// ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼
 		break;
-	case 4:	// ƒQ[ƒ€ƒNƒŠƒA
+	case 4:	// ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢
 		break;
 	}
 }

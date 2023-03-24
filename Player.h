@@ -5,37 +5,43 @@
 
 class Player
 {
-public:	// ƒƒ“ƒoŠÖ”
-	void playerInitialize();	// ‰Šú‰»
-	void playerUpdate();		// XV
-	void playerDraw();			// •`‰æ
-	void playerMove();			// “®ì
-	void playerReset();			// ƒŠƒZƒbƒg
+public:	// ãƒ¡ãƒ³ãƒé–¢æ•°
+	void playerInitialize(Input* input_);	// åˆæœŸåŒ–
+	void playerUpdate();		// æ›´æ–°
+	void playerDraw();			// æç”»
+	void playerMove();			// å‹•ä½œ
+	void playerReset();			// ãƒªã‚»ãƒƒãƒˆ
 
 	int GetScrollX() { return scrollX; }
 
 	
-private: // ƒƒ“ƒo•Ï”
-	// ƒvƒŒƒCƒ„[•Ï”
-	int playerX = 0;		// X²
-	int playerY = 500;		// Y²
-	int playerR = 15;		// ”¼Œa
-	int playerSpeed = 10;	// ƒXƒs[ƒh’l
-	int playerFlag = 1;		// ¶‘¶ƒtƒ‰ƒO
-	int playerGraph = LoadGraph("Resources/Player1.png"); // ‰æ‘œ
+private: // ãƒ¡ãƒ³ãƒå¤‰æ•°
+	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å¤‰æ•°
+	int playerX = 0;		// Xè»¸
+	int playerY = 500;		// Yè»¸
+	int playerR = 15;		// åŠå¾„
+
+	int playerSpeed = 10;	// ã‚¹ãƒ”ãƒ¼ãƒ‰å€¤
+
+
+	int playerGravity = 0;
+	int playerAccel = 1;
+	int playerCanJump = 0;
+
+	int playerFlag = 1;		// ç”Ÿå­˜ãƒ•ãƒ©ã‚°
+	int playerGraph = LoadGraph("Resources/Player1.png"); // ç”»åƒ
 	int backGroundGraph = LoadGraph("Resources/backGround.png");
 
-	int playerScreenX = 0;	//ƒvƒŒƒCƒ„[‚Ìƒ‚ƒjƒ^[À•W
-	int playerScreenY = 0;	//Œ»İ‚Íg—p‚µ‚Ä‚¢‚È‚¢
+	int playerScreenX = 0;	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ¢ãƒ‹ã‚¿ãƒ¼åº§æ¨™
+	int playerScreenY = 0;	//ç¾åœ¨ã¯ä½¿ç”¨ã—ã¦ã„ãªã„
 
-	int scrollX = 0;	//ˆÚ“®—Ê‚Ì‹L‰¯
-	int scrollY = 0;	//Œ»İ‚Íg—p‚µ‚Ä‚¢‚È‚¢
-	int gravity_ = 0;
-	int accel_ = 1;
-	int canJump = 0;
-	// ƒL[ƒ{[ƒh•Ï”
-	char key[256] = { 0 }; //ÅV‚ÌƒL[ƒ{[ƒhî•ñ—p
-	char oldkey[256] = { 0 };//1ƒ‹[ƒviƒtƒŒ[ƒ€j‘O‚ÌƒL[ƒ{[ƒhî•ñ
+
+	int scrollX = 0;	//ç§»å‹•é‡ã®è¨˜æ†¶
+	int scrollY = 0;	//ç¾åœ¨ã¯ä½¿ç”¨ã—ã¦ã„ãªã„
+
+	// ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰å¤‰æ•°
+	char key[256] = { 0 }; //æœ€æ–°ã®ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰æƒ…å ±ç”¨
+	char oldkey[256] = { 0 };//1ãƒ«ãƒ¼ãƒ—ï¼ˆãƒ•ãƒ¬ãƒ¼ãƒ ï¼‰å‰ã®ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰æƒ…å ±
 
 	Input* input;
 };

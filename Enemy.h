@@ -10,6 +10,10 @@ public:	// メンバ関数
 	void enemyMove();		// 動作
 	void enemyBorn();		// リスポーン
 	void enemyReset();		// リセット
+	int GetenemyX() { for (int i = 0; i < 1; i++) { return enemy1X[i]; } }
+	int GetenemyY() { for (int i = 0; i < 1; i++) { return enemy1Y[i]; } }
+	int GetenemyFlag() { for (int i = 0; i < 1; i++) { return enemy1Flag[i]; } }
+	int GetenemyReset() { for (int i = 0; i < 1; i++) { return enemy1Flag[i] = 0; } }
 private: // メンバ変数
 	int enemy1X[5];		// X軸
 	int enemy1Y[5];		// Y軸

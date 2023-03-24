@@ -1,21 +1,21 @@
+#include "DxLib.h"
 #include "Player.h"
 
 
 
-// ‰Šú‰»
-void Player::playerInitialize()
+// åˆæœŸåŒ–
+void Player::playerInitialize(Input* input_)
 {
-	input = new Input();
+	input = input_;
 }
 
-// XV
+// æ›´æ–°
 void Player::playerUpdate()
 {
 	for (int i = 0; i < 256; ++i)
 	{
 		oldkey[i] = key[i];
 	}
-
 	GetHitKeyStateAll(key);
 
 	if (playerFlag == 1)
@@ -25,7 +25,7 @@ void Player::playerUpdate()
 	}
 }
 
-// •`‰æ
+// æç”»
 void Player::playerDraw()
 {
 	DrawGraph(scrollX, 0, backGroundGraph, TRUE);
@@ -40,11 +40,10 @@ void Player::playerDraw()
 	
 }
 
-// “®ì
+// å‹•ä½œ
 void Player::playerMove()
 {
-	
-#pragma region ƒXƒNƒ[ƒ‹ˆÚ“®(“®ìŠm”F‚Ìˆ×)
+#pragma region ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ç§»å‹•(å‹•ä½œç¢ºèªã®ç‚º)
 
 	if (key[KEY_INPUT_D])
 	{
@@ -86,28 +85,36 @@ void Player::playerMove()
 
 #pragma endregion
 
-	if (playerY <= 500 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && canJump < 2)
+	if (playerY <= 500 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && playerCanJump < 2)
+
 	{
-		canJump++;
-		gravity_ = -20;
+		playerCanJump++;
+		playerGravity = -20;
 	}
 
-	if (canJump < 3)
+	if (playerCanJump < 3)
 	{
-		gravity_ += accel_;
-		playerY += gravity_;
+		playerGravity += playerAccel;
+		playerY += playerGravity;
 	}
 
 	if (playerY >= 500)
 	{
 		playerY = 500;
-		gravity_ = 0;
-		canJump = 0;
+		playerGravity = 0;
+		playerCanJump = 0;
 	}
 	
+	// ã‚¹ãƒ©ã‚¤ãƒ‡ã‚£ãƒ³ã‚°
+	if (playerY >= 500 && key[KEY_INPUT_S] == 1)
+	{
+		playerR = 5;
+	} else {
+		playerR = 20;
+	}
 }
 
-// ƒŠƒZƒbƒg
+// ãƒªã‚»ãƒƒãƒˆ
 void Player::playerReset()
 {
 

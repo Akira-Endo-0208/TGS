@@ -2,6 +2,7 @@
 
 #include "Player.h"
 #include "Enemy.h"
+#include "Collision.h"
 #include "Input.h"
 #include "Map.h"
 
@@ -64,6 +65,7 @@ private: // ƒƒ“ƒo•Ï”
 
 	Player* player;
 	Enemy* enemy;
+	Collision* collision;
 	Input* input;
 	Map* map;
 };
