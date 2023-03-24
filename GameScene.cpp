@@ -10,12 +10,23 @@ void GameScene::Initialize()
 	enemy = new Enemy();
 	collision = new Collision();
 	input = new Input();
+  
+  //追加分
+  
+	map = new Map();
+
+	map->Initialize(player);
+  
+  //追加分
+  
+  
 	otherScene = new OtherScene();
 
 	player->playerInitialize(input);
 	enemy->enemyInitialize();
 	collision->collisionInitialize(player, enemy, otherScene);
 	otherScene->OtherSceneInitialize();
+
 
 	// 乱数の初期化
 	srand(time(NULL));
@@ -60,11 +71,14 @@ void GameScene::Draw()
 	case 0:	// タイトル
 		otherScene->OtherSceneDraw();
 		break;
+		
+
 	case 1:	// ステージセレクト
 		otherScene->OtherSceneDraw();
 		break;
 	case 2:	// ゲームオーバー
 		otherScene->OtherSceneDraw();
+
 		break;
 	case 3:	// ゲームクリア
 		otherScene->OtherSceneDraw();
@@ -76,6 +90,12 @@ void GameScene::Draw()
 	case 5:	// ゲーム画面
 		player->playerDraw();
 		enemy->enemyDraw();
+    
+    //追加分
+    
+    map->Draw();
+    
+     //追加分
 		break;
 	}
 }

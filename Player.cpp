@@ -2,6 +2,7 @@
 #include "Player.h"
 
 
+
 // 初期化
 void Player::playerInitialize(Input* input_)
 {
@@ -112,4 +113,5 @@ void Player::playerReset()
 	playerLife = 3;
 	playerScreenX = 0;
 	scrollX = 0;
-}
+} 
+
