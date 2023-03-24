@@ -1,6 +1,6 @@
 #pragma once
 #include "Input.h"
-
+#include "DxLib.h"
 
 
 class Player
@@ -11,6 +11,10 @@ public:	// メンバ関数
 	void playerDraw();			// 描画
 	void playerMove();			// 動作
 	void playerReset();			// リセット
+
+	int GetScrollX() { return scrollX; }
+
+	
 private: // メンバ変数
 	// プレイヤー変数
 	int playerX = 0;		// X軸

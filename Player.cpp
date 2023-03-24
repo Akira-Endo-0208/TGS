@@ -1,5 +1,5 @@
-#include "DxLib.h"
 #include "Player.h"
+
 
 
 // ‰Šú‰»
@@ -111,4 +111,4 @@ void Player::playerMove()
 void Player::playerReset()
 {
 
-}
+} 

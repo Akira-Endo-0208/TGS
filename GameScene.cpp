@@ -9,9 +9,11 @@ void GameScene::Initialize()
 	player = new Player();
 	enemy = new Enemy();
 	input = new Input();
+	map = new Map();
 
 	player->playerInitialize();
 	enemy->enemyInitialize();
+	map->Initialize(player);
 
 	// 乱数の初期化
 	srand(time(NULL));
@@ -51,7 +53,7 @@ void GameScene::Draw()
 		
 		player->playerDraw();
 		enemy->enemyDraw();
-		
+		map->Draw();
 		break;
 	case 2:	// チュートリアル
 		break;

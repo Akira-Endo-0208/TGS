@@ -3,7 +3,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Input.h"
-
+#include "Map.h"
 
 class GameScene
 {
@@ -65,4 +65,5 @@ private: // ƒƒ“ƒo•Ï”
 	Player* player;
 	Enemy* enemy;
 	Input* input;
+	Map* map;
 };
