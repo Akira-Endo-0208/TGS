@@ -4,20 +4,29 @@
 #include "Enemy.h"
 #include "Collision.h"
 #include "Input.h"
+
+ //è¿½åŠ åˆ†
+#include "Map.h"
+
 #include "OtherScene.h"
 
 
 class GameScene
 {
-public:	// ƒƒ“ƒoŠÖ”
-	void Initialize();	// ‰Šú‰»
-	void Update();		// XV
-	void Draw();		// •`‰æ
-private: // ƒƒ“ƒo•Ï”
-	// ƒ|ƒCƒ“ƒ^
+public:	// ãƒ¡ãƒ³ãƒé–¢æ•°
+	void Initialize();	// åˆæœŸåŒ–
+	void Update();		// æ›´æ–°
+	void Draw();		// æç”»
+private: // ãƒ¡ãƒ³ãƒå¤‰æ•°
+	// ãƒã‚¤ãƒ³ã‚¿
 	Player* player;
 	Enemy* enemy;
 	Collision* collision;
 	Input* input;
+  
+ //è¿½åŠ åˆ†
+	Map* map;
+  
 	OtherScene* otherScene;
+
 };
