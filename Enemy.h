@@ -10,6 +10,7 @@ public:	// メンバ関数
 	void enemyDraw();		// 描画
 	void enemyMove();		// 動作
 	void enemyBorn();		// リスポーン
+	void enemyMoveGraph();	// グラフィック
 	void enemyReset();		// リセット
 	int GetenemyX() { for (int i = 0; i < 1; i++) { return enemy1X[i]; } }
 	int GetenemyY() { for (int i = 0; i < 1; i++) { return enemy1Y[i]; } }
@@ -22,9 +23,11 @@ private: // メンバ変数
 	int enemy1Speed[5];	// スピード値
 	int enemy1Born[5];	// リスポーン
 	int enemy1Flag[5];	// 生存フラグ
+	int enemy1GraphTime[5];
+	int enemy1Time[5];
 
 	// 画像
-	int enemy1Graph = LoadGraph("Resources/Enemy1.png");
+	int enemy1Graph = LoadGraph("Resources/suraimu-kari.png");
 
 	// ポインタ
 	Player* player;

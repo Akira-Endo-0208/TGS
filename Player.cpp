@@ -20,6 +20,8 @@ void Player::playerUpdate()
 	if (playerFlag == 1)
 	{
 		playerMove();
+		playerMoveScroll();
+		playerMoveGraph();
 	}
 }
 
@@ -31,6 +33,7 @@ void Player::playerDraw()
 	if (playerFlag == 1)
 	{
 		DrawBox(playerScreenX, playerY, playerScreenX + 32, playerY + playerSizeY, GetColor(255, 255, 255), true);
+		DrawRectGraph(playerScreenX, playerY + playerSizeY, 38 * playerGraphTime, 0, 38, 56, playerGraph, TRUE, FALSE);
 	}
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "SPACE   JUMP,2JUMP");
 	DrawFormatString(0, 20, GetColor(255, 255, 255), "S       SLIDING");
@@ -43,8 +46,37 @@ void Player::playerDraw()
 // 動作
 void Player::playerMove()
 {
-#pragma region スクロール移動(動作確認の為)
+	if (playerY <= 500 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && playerCanJump < 2)
+	{
+		playerCanJump++;
+		playerGravity = -20;
+	}
 
+	if (playerCanJump < 3)
+	{
+		playerGravity += playerAccel;
+		playerY += playerGravity;
+	}
+
+	if (playerY >= 500)
+	{
+		playerY = 500;
+		playerGravity = 0;
+		playerCanJump = 0;
+	}
+	
+	// スライディング
+	if (playerY >= 500 && key[KEY_INPUT_S] == 1)
+	{
+		playerSizeY = -5;
+	} else {
+		playerSizeY = -56;
+	}
+}
+
+// スクロール
+void Player::playerMoveScroll()
+{
 	//if (key[KEY_INPUT_D])
 	//{
 		playerX += playerSpeed;
@@ -73,34 +105,19 @@ void Player::playerMove()
 	}
 
 	playerScreenX = playerX - scrollX;
+}
 
-#pragma endregion
-
-	if (playerY <= 500 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && playerCanJump < 2)
+// グラフィック
+void Player::playerMoveGraph()
+{
+	playerTime++;
+	if (playerGraphTime != 15 && playerTime == 5)
 	{
-		playerCanJump++;
-		playerGravity = -20;
-	}
-
-	if (playerCanJump < 3)
-	{
-		playerGravity += playerAccel;
-		playerY += playerGravity;
-	}
-
-	if (playerY >= 500)
-	{
-		playerY = 500;
-		playerGravity = 0;
-		playerCanJump = 0;
-	}
-	
-	// スライディング
-	if (playerY >= 500 && key[KEY_INPUT_S] == 1)
-	{
-		playerSizeY = -5;
-	} else {
-		playerSizeY = -32;
+		playerGraphTime++;
+		playerTime = 0;
+	} else if (playerGraphTime == 15 && playerTime == 5) {
+		playerGraphTime = 0;
+		playerTime = 0;
 	}
 }
 
@@ -113,4 +130,6 @@ void Player::playerReset()
 	playerLife = 3;
 	playerScreenX = 0;
 	scrollX = 0;
+	playerGraphTime = 0;
+	playerTime = 0;
 } 

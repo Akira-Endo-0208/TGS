@@ -48,17 +48,17 @@ void Collision::collisionPlayerBlock()
 	{
 		for (int x = 0; x < width; x++)
 		{
-			if (map->GetBlock(player->GetplayerY() / 64,
-				player->GetplayerX() + 1 / 64) == 1 &&
-				map->GetBlock(player->GetplayerY() / 64,
-					player->GetplayerX() - 1 / 64) == 1 &&
-				map->GetBlock((player->GetplayerY() + player->GetplayerSizeY()) / 64,
-					(player->GetplayerX() + 32) + 1 / 64) == 1 &&
-				map->GetBlock((player->GetplayerY() + player->GetplayerSizeY()) / 64,
-					(player->GetplayerX() + 32) - 1 / 64) == 1)
-			{
-				player->HitLife();
-			}
+			//if (map->GetBlock(player->GetplayerY() / 64,
+			//	player->GetplayerX() + 1 / 64) == 1 &&
+			//	map->GetBlock(player->GetplayerY() / 64,
+			//		player->GetplayerX() - 1 / 64) == 1 &&
+			//	map->GetBlock((player->GetplayerY() + player->GetplayerSizeY()) / 64,
+			//		(player->GetplayerX() + 32) + 1 / 64) == 1 &&
+			//	map->GetBlock((player->GetplayerY() + player->GetplayerSizeY()) / 64,
+			//		(player->GetplayerX() + 32) - 1 / 64) == 1)
+			//{
+			//	player->HitLife();
+			//}
 		}
 	}
 }

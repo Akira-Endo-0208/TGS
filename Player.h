@@ -10,6 +10,8 @@ public:	// メンバ関数
 	void playerUpdate();		// 更新
 	void playerDraw();			// 描画
 	void playerMove();			// 動作
+	void playerMoveGraph();		// グラフィック
+	void playerMoveScroll();	// スクロール
 	void playerReset();			// リセット
 	int GetplayerX() { return playerX; }
 	int GetplayerY() { return playerY; }
@@ -22,7 +24,7 @@ private: // メンバ変数
 	// プレイヤー変数
 	int playerX;			// X軸
 	int playerY;			// Y軸
-	int playerSizeY = 32;
+	int playerSizeY = 56;
 	int playerSpeed = 2;	// スピード値
 	int playerGravity = 0;	// 重力
 	int playerAccel = 1;	// 加速度
@@ -33,6 +35,8 @@ private: // メンバ変数
 	int playerScreenY = 0;	//現在は使用していない
 	int scrollX;			//移動量の記憶
 	int scrollY = 0;		//現在は使用していない
+	int playerGraphTime;
+	int playerTime;
 
 	// 画像
 	int playerGraph = LoadGraph("Resources/Player.kari.png");
