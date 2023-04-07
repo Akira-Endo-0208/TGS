@@ -1,5 +1,7 @@
 #pragma once
 #include "Input.h"
+#include "DxLib.h"
+
 
 class Player
 {
@@ -9,19 +11,19 @@ public:	// メンバ関数
 	void playerDraw();			// 描画
 	void playerMove();			// 動作
 	void playerReset();			// リセット
-	int GetScrollX() { return scrollX; }
 	int GetplayerX() { return playerX; }
 	int GetplayerY() { return playerY; }
-	int GetplayerR() { return playerR; }
+	int GetplayerSizeY() { return playerSizeY; }
 	int GetplayerFlag() { return playerFlag; }
 	int GetLife() { return playerLife; }
 	int HitLife() { return playerLife -= 1; }
+	int GetScrollX() { return scrollX; }
 private: // メンバ変数
 	// プレイヤー変数
 	int playerX;			// X軸
 	int playerY;			// Y軸
-	int playerR = 15;		// 半径
-	int playerSpeed = 10;	// スピード値
+	int playerSizeY = 32;
+	int playerSpeed = 2;	// スピード値
 	int playerGravity = 0;	// 重力
 	int playerAccel = 1;	// 加速度
 	int playerCanJump = 0;	// 2段ジャンプ判定
@@ -33,7 +35,7 @@ private: // メンバ変数
 	int scrollY = 0;		//現在は使用していない
 
 	// 画像
-	int playerGraph = LoadGraph("Resources/Player1.png");
+	int playerGraph = LoadGraph("Resources/Player.kari.png");
 	int backGroundGraph = LoadGraph("Resources/backGround.png");
 
 	// キーボード変数

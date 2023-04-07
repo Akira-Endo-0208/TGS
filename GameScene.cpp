@@ -8,15 +8,15 @@ void GameScene::Initialize()
 {
 	player = new Player();
 	enemy = new Enemy();
+	map = new Map();
 	collision = new Collision();
 	input = new Input();  
-	map = new Map();
-	map->Initialize(player);
 	otherScene = new OtherScene();
 
 	player->playerInitialize(input);
-	enemy->enemyInitialize();
-	collision->collisionInitialize(player, enemy, otherScene);
+	enemy->enemyInitialize(player);
+	map->Initialize(player);
+	collision->collisionInitialize(player, enemy, otherScene, map);
 	otherScene->OtherSceneInitialize();
 
 	// 乱数の初期化
@@ -33,6 +33,7 @@ void GameScene::Update()
 		break;
 	case 1:	// ステージセレクト
 		player->playerReset();
+		enemy->enemyReset();
 		otherScene->OtherSceneUpdate();
 		break;
 	case 2:	// ゲームオーバー
@@ -78,7 +79,7 @@ void GameScene::Draw()
 	case 5:	// ゲーム画面
 		player->playerDraw();
 		enemy->enemyDraw();
-    map->Draw();
+		map->Draw();
 		break;
 	}
 }

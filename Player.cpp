@@ -27,9 +27,10 @@ void Player::playerUpdate()
 void Player::playerDraw()
 {
 	DrawGraph(scrollX, 0, backGroundGraph, TRUE);
+	DrawGraph(scrollX - 1280, 0, backGroundGraph, TRUE);
 	if (playerFlag == 1)
 	{
-		DrawCircle(playerScreenX, playerY, playerR, GetColor(255, 255, 255));
+		DrawBox(playerScreenX, playerY, playerScreenX + 32, playerY + playerSizeY, GetColor(255, 255, 255), true);
 	}
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "SPACE   JUMP,2JUMP");
 	DrawFormatString(0, 20, GetColor(255, 255, 255), "S       SLIDING");
@@ -44,23 +45,23 @@ void Player::playerMove()
 {
 #pragma region スクロール移動(動作確認の為)
 
-	if (key[KEY_INPUT_D])
-	{
+	//if (key[KEY_INPUT_D])
+	//{
 		playerX += playerSpeed;
 		if (playerX > 1280 / 2 && playerX <= 1920)
 		{
 			scrollX += playerSpeed;
 		}
-	}
+	//}
 
-	if (key[KEY_INPUT_A])
-	{
-		playerX -= playerSpeed;
-		if (playerX < 1920 && playerX >= 640)
-		{
-			scrollX -= playerSpeed;
-		}
-	}
+	//if (key[KEY_INPUT_A])
+	//{
+	//	playerX -= playerSpeed;
+		//if (playerX < 1920 && playerX >= 640)
+		//{
+		//	scrollX -= playerSpeed;
+		//}
+	//}
 
 	if (playerX < 640)
 	{
@@ -97,9 +98,9 @@ void Player::playerMove()
 	// スライディング
 	if (playerY >= 500 && key[KEY_INPUT_S] == 1)
 	{
-		playerR = 5;
+		playerSizeY = -5;
 	} else {
-		playerR = 20;
+		playerSizeY = -32;
 	}
 }
 
