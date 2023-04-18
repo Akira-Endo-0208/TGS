@@ -79,11 +79,27 @@ void Player::playerMoveScroll()
 {
 	//if (key[KEY_INPUT_D])
 	//{
+	
+	
 		playerX += playerSpeed;
-		if (playerX > 1280 / 2 && playerX <= 1920)
+
+		if (playerScreenX > 1280 / 2 && playerX <= maxWidth)
 		{
 			scrollX += playerSpeed;
 		}
+
+
+		if(playerX >= maxWidth + 640)
+		{
+			roundTripFlag = 1;
+		}
+
+		if (roundTripFlag == 1)
+		{
+			playerSpeed = -10;
+		}
+
+		
 	//}
 
 	//if (key[KEY_INPUT_A])
@@ -94,14 +110,14 @@ void Player::playerMoveScroll()
 		//	scrollX -= playerSpeed;
 		//}
 	//}
+	if (playerX > maxWidth)
+	{
+		scrollX = maxWidth - 640;
+	}
 
-	if (playerX < 640)
+	if (playerX < 650)
 	{
 		scrollX = 0;
-	}
-	if (playerX > 1920)
-	{
-		scrollX = 1280;
 	}
 
 	playerScreenX = playerX - scrollX;

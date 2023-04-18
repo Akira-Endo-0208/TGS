@@ -65,7 +65,7 @@ void Collision::collisionPlayerBlock()
 
 void Collision::collisionPlayerClaer()
 {
-	if (player->GetplayerFlag() == 1 && player->GetplayerX() >= 2420)
+	if (player->GetplayerFlag() == 1 && player->GetplayerX() <= 0 && player->GetRoundTripFlag() == 1)
 	{
 		otherScene->GameClaerScene();
 	}
