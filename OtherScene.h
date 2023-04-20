@@ -12,6 +12,7 @@ public: // メンバ関数
 	int TitleScene() { return scene = 0; }
 	int GameOverScene() { return scene = 2; }
 	int GameClaerScene() { return scene = 3; }
+
 private: // メンバ変数
 	// シーン切り替え
 	int scene = 0;

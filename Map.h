@@ -1,16 +1,20 @@
 #pragma once
 #include "Player.h"
 
+const int width = 150;
+const int length = 12;
+
 const int width = 20;
 const int length = 11;
 
 class Map
 {
 public:
-	void Initialize(Player* player_);	// 初期化
-	void Update();		// 更新
-	void Draw();		// 描画
+	void Initialize(Player* _player);	// ﾂ鞘ｰﾅﾃｺ窶ｰﾂｻ
+	void Update();		// ﾂ更ﾂ新
+	void Draw();		// 窶｢`窶ｰﾃｦ
 	int GetBlock(int y,int x) { return mapData[y][x]; }
+	int GetMapStageCount() { return mapStageCount; }
 private:
 	enum MAPBLOCK
 	{
@@ -20,8 +24,10 @@ private:
 	};
 
 	int mapData[length][width] = {};
+	int mapStageCount = 1;
 
 	int blockGraph = LoadGraph("Resources/block2.png");
 	
 	Player* player_ = nullptr;
+	
 };

@@ -51,6 +51,7 @@ void GameScene::Update()
 		player->playerUpdate();
 		enemy->enemyUpdate();
 		collision->collisionUpdate();
+		map->Update();
 		break;
 	}
 }

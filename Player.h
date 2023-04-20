@@ -20,12 +20,14 @@ public:	// メンバ関数
 	int GetLife() { return playerLife; }
 	int HitLife() { return playerLife -= 1; }
 	int GetScrollX() { return scrollX; }
+	int GetRoundTripFlag() { return roundTripFlag; }
+	void SetMaxWidth(int _maxWidth) { this->maxWidth = _maxWidth; }
 private: // メンバ変数
 	// プレイヤー変数
 	int playerX;			// X軸
 	int playerY;			// Y軸
 	int playerSizeY = 56;
-	int playerSpeed = 2;	// スピード値
+	int playerSpeed = 10;	// スピード値
 	int playerGravity = 0;	// 重力
 	int playerAccel = 1;	// 加速度
 	int playerCanJump = 0;	// 2段ジャンプ判定
@@ -37,7 +39,8 @@ private: // メンバ変数
 	int scrollY = 0;		//現在は使用していない
 	int playerGraphTime;
 	int playerTime;
-
+	int roundTripFlag = 0;
+	int maxWidth = 0;
 	// 画像
 	int playerGraph = LoadGraph("Resources/Player.kari.png");
 	int backGroundGraph = LoadGraph("Resources/haikei2.png");
