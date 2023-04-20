@@ -143,23 +143,18 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
-
     <ClCompile Include="Map.cpp" />
-
     <ClCompile Include="OtherScene.cpp" />
-
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Tutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Input.h" />
-
     <ClInclude Include="Map.h" />
-
     <ClInclude Include="OtherScene.h" />
-
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
