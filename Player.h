@@ -40,7 +40,7 @@ private: // メンバ変数
 
 	// 画像
 	int playerGraph = LoadGraph("Resources/Player.kari.png");
-	int backGroundGraph = LoadGraph("Resources/backGround.png");
+	int backGroundGraph = LoadGraph("Resources/haikei2.png");
 
 	// キーボード変数
 	char key[256] = { 0 }; //最新のキーボード情報用

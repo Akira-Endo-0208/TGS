@@ -2,7 +2,7 @@
 #include "Player.h"
 
 const int width = 20;
-const int length = 10;
+const int length = 11;
 
 class Map
 {
@@ -20,6 +20,8 @@ private:
 	};
 
 	int mapData[length][width] = {};
+
+	int blockGraph = LoadGraph("Resources/block2.png");
 	
 	Player* player_ = nullptr;
 };

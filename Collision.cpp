@@ -28,7 +28,7 @@ void Collision::collisionPlayerEnemy()
 			float dX2 = abs((player->GetplayerX() + 32) - enemy->GetenemyX());
 			float dY2 = abs((player->GetplayerY() + player->GetplayerSizeY()) - enemy->GetenemyY());
 			// ƒvƒŒƒCƒ„[‚Æ“G‚ª“–‚½‚Á‚½‚ç
-			if (dX < 32 && dY < 32 && dX2 < 32 && dY2 < 32)
+			if (dX < 32 && dY < 56 && dX2 < 32 && dY2 < 56)
 			{
 				player->HitLife();
 				enemy->GetenemyReset();
