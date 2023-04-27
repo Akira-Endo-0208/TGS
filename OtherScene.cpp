@@ -15,12 +15,12 @@ void OtherScene::OtherSceneUpdate()
 	}
 	GetHitKeyStateAll(key);
 
-	if (key[KEY_INPUT_A] == 1 && oldkey[KEY_INPUT_A] == 0 && scene == 1 && selectScene > 4)
-	{
-		selectScene--;
-	} else if (key[KEY_INPUT_D] == 1 && oldkey[KEY_INPUT_D] == 0 && scene == 1 && selectScene < 5) {
-		selectScene++;
-	}
+	//if (key[KEY_INPUT_A] == 1 && oldkey[KEY_INPUT_A] == 0 && scene == 1 && selectScene > 4)
+	//{
+	//	selectScene--;
+	//} else if (key[KEY_INPUT_D] == 1 && oldkey[KEY_INPUT_D] == 0 && scene == 1 && selectScene < 5) {
+	//	selectScene++;
+	//}
 
 	if (key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0)
 	{
@@ -47,12 +47,12 @@ void OtherScene::OtherSceneDraw()
 	switch (scene)
 	{
 	case 0: // タイトル
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "タイトル   SPACE->ステージセレクト");
+		DrawGraph(0, 0, titleGraph, TRUE);
 		break;
 	case 1: // ステージセレクト
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "ステージセレクト   SPACE->ゲーム画面");
-		DrawFormatString(0, 20, GetColor(255, 255, 255), "チュートリアル->4 ステージ1->5");
-		DrawFormatString(0, 40, GetColor(255, 255, 255), "キーA->-  キーD->+  (%d)", selectScene);
+		DrawGraph(0, 0, stageSelectGraph, TRUE);
+		//DrawFormatString(0, 0, GetColor(255, 255, 255), "チュートリアル->4 ステージ1->5");
+		//DrawFormatString(0, 20, GetColor(255, 255, 255), "キーA->-  キーD->+  (%d)", selectScene);
 		break;
 	case 2: // ゲームオーバー
 		DrawFormatString(0, 0, GetColor(255, 255, 255), "ゲームオーバー   SPACE->タイトル");

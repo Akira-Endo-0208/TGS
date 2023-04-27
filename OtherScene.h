@@ -23,7 +23,8 @@ private: // メンバ変数
 	char oldkey[256] = { 0 };//1ループ（フレーム）前のキーボード情報
 
 	// 画像
-	int titleGraph = LoadGraph("Resources/Title.png");
+	int titleGraph = LoadGraph("Resources/title.png");
+	int stageSelectGraph = LoadGraph("Resources/stageSelect.png");
 	int gameOverGraph = LoadGraph("Resources/gameOver_.png");
 	int gameClearGraph = LoadGraph("Resources/GameClear_.png");
 

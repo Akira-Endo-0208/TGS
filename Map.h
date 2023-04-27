@@ -1,18 +1,15 @@
 #pragma once
-#include "Player.h"
+#include "Sprite.h"
 
 const int width = 150;
 const int length = 12;
 
-const int width = 20;
-const int length = 11;
-
 class Map
 {
 public:
-	void Initialize(Player* _player);	// ‰Šú‰»
-	void Update();		// XV
-	void Draw();		// •`‰æ
+	void Initialize(Player* _player);	// 初期化
+	void Update();		// 更新
+	void Draw();		// 描画
 	int GetBlock(int y,int x) { return mapData[y][x]; }
 	int GetMapStageCount() { return mapStageCount; }
 private:
@@ -29,5 +26,4 @@ private:
 	int blockGraph = LoadGraph("Resources/block2.png");
 	
 	Player* player_ = nullptr;
-	
 };

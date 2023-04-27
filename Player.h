@@ -16,6 +16,7 @@ public:	// メンバ関数
 	int GetplayerX() { return playerX; }
 	int GetplayerY() { return playerY; }
 	int GetplayerSizeY() { return playerSizeY; }
+	int GetplayerSpeed() { return playerSpeed; }
 	int GetplayerFlag() { return playerFlag; }
 	int GetLife() { return playerLife; }
 	int HitLife() { return playerLife -= 1; }
@@ -26,8 +27,8 @@ private: // メンバ変数
 	// プレイヤー変数
 	int playerX;			// X軸
 	int playerY;			// Y軸
-	int playerSizeY = 56;
-	int playerSpeed = 10;	// スピード値
+	int playerSizeY = 56;	// Y軸サイズ変更
+	int playerSpeed;		// スピード値
 	int playerGravity = 0;	// 重力
 	int playerAccel = 1;	// 加速度
 	int playerCanJump = 0;	// 2段ジャンプ判定
@@ -37,6 +38,7 @@ private: // メンバ変数
 	int playerScreenY = 0;	//現在は使用していない
 	int scrollX;			//移動量の記憶
 	int scrollY = 0;		//現在は使用していない
+	int graphscrollX;
 	int playerGraphTime;
 	int playerTime;
 	int roundTripFlag = 0;

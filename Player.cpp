@@ -28,25 +28,26 @@ void Player::playerUpdate()
 // 描画
 void Player::playerDraw()
 {
-	DrawGraph(scrollX, 0, backGroundGraph, TRUE);
-	DrawGraph(scrollX - 1280, 0, backGroundGraph, TRUE);
+	DrawGraph(graphscrollX, 0, backGroundGraph, TRUE);
+	DrawGraph(graphscrollX + 1280, 0, backGroundGraph, TRUE);
 	if (playerFlag == 1)
 	{
-		DrawBox(playerScreenX, playerY, playerScreenX + 32, playerY + playerSizeY, GetColor(255, 255, 255), true);
+		//DrawBox(playerScreenX, playerY, playerScreenX + 32, playerY + playerSizeY, GetColor(255, 255, 255), true);
 		DrawRectGraph(playerScreenX, playerY + playerSizeY, 38 * playerGraphTime, 0, 38, 56, playerGraph, TRUE, FALSE);
 	}
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "SPACE   JUMP,2JUMP");
-	DrawFormatString(0, 20, GetColor(255, 255, 255), "S       SLIDING");
+	//DrawFormatString(0, 0, GetColor(255, 255, 255), "SPACE   JUMP,2JUMP");
+	//DrawFormatString(0, 20, GetColor(255, 255, 255), "S       SLIDING");
 	DrawFormatString(0, 40, GetColor(255, 255, 255), "LIFE    %d", playerLife);
-	DrawFormatString(0, 60, GetColor(255, 255, 255), "%d", playerScreenX);
-	DrawFormatString(0, 80, GetColor(255, 255, 255), "%d", scrollX);
-	DrawFormatString(0, 100, GetColor(255, 255, 255), "%d", playerX);
+	//DrawFormatString(0, 60, GetColor(255, 255, 255), "playerScreenX %d", playerScreenX);
+	DrawFormatString(0, 80, GetColor(255, 255, 255), "scrollX %d", scrollX);
+	//DrawFormatString(0, 100, GetColor(255, 255, 255), "playerX %d", playerX);
 }
 
 // 動作
 void Player::playerMove()
 {
-	if (playerY <= 500 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && playerCanJump < 2)
+	// ジャンプ
+	if (playerY <= 512 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && playerCanJump < 2)
 	{
 		playerCanJump++;
 		playerGravity = -20;
@@ -58,18 +59,18 @@ void Player::playerMove()
 		playerY += playerGravity;
 	}
 
-	if (playerY >= 500)
+	if (playerY >= 512)
 	{
-		playerY = 500;
+		playerY = 512;
 		playerGravity = 0;
 		playerCanJump = 0;
 	}
 	
-	// スライディング
-	if (playerY >= 500 && key[KEY_INPUT_S] == 1)
-	{
-		playerSizeY = -5;
-	} else {
+	//// スライディング
+	//if (playerY >= 500 && key[KEY_INPUT_S] == 1)
+	//{
+	//	playerSizeY = -5;
+/*	} else*/ {
 		playerSizeY = -56;
 	}
 }
@@ -77,39 +78,32 @@ void Player::playerMove()
 // スクロール
 void Player::playerMoveScroll()
 {
-	//if (key[KEY_INPUT_D])
-	//{
-	
-	
-		playerX += playerSpeed;
+	playerX += playerSpeed;
 
-		if (playerScreenX > 1280 / 2 && playerX <= maxWidth)
+	if (playerScreenX > 1280 / 2 && playerX <= maxWidth)
+	{
+		scrollX += playerSpeed;
+		graphscrollX -= playerSpeed;
+		if (graphscrollX <= -1280 && roundTripFlag == 0)
 		{
-			scrollX += playerSpeed;
+			graphscrollX = 0;
 		}
-
-
-		if(playerX >= maxWidth + 640)
+		else if (graphscrollX >= 0 && roundTripFlag == 1)
 		{
-			roundTripFlag = 1;
+			graphscrollX = -1280;
 		}
+	}
 
-		if (roundTripFlag == 1)
-		{
-			playerSpeed = -10;
-		}
+	if (playerX >= maxWidth + 640)
+	{
+		roundTripFlag = 1;
+	}
 
-		
-	//}
+	if (roundTripFlag == 1)
+	{
+		playerSpeed = -5;
+	}
 
-	//if (key[KEY_INPUT_A])
-	//{
-	//	playerX -= playerSpeed;
-		//if (playerX < 1920 && playerX >= 640)
-		//{
-		//	scrollX -= playerSpeed;
-		//}
-	//}
 	if (playerX > maxWidth)
 	{
 		scrollX = maxWidth - 640;
@@ -141,11 +135,14 @@ void Player::playerMoveGraph()
 void Player::playerReset()
 {
 	playerX = 200;
-	playerY = 500;
+	playerY = 512;
+	playerSpeed = 5;
 	playerFlag = 1;
 	playerLife = 3;
 	playerScreenX = 0;
 	scrollX = 0;
+	graphscrollX = 0;
 	playerGraphTime = 0;
 	playerTime = 0;
+	roundTripFlag = 0;
 } 

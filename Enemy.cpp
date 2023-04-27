@@ -23,10 +23,10 @@ void Enemy::enemyDraw()
 	{
 		if (enemy1Flag[i] == 1)
 		{
-			DrawBox(enemy1X[i] - player->GetScrollX(), enemy1Y[i], enemy1X[i] - player->GetScrollX() + 32, enemy1Y[i] + 32, GetColor(255, 0, 0), true);
+			//DrawBox(enemy1X[i] - player->GetScrollX(), enemy1Y[i], enemy1X[i] - player->GetScrollX() + 32, enemy1Y[i] + 32, GetColor(255, 0, 0), true);
 			DrawRectGraph(enemy1X[i] - player->GetScrollX(), enemy1Y[i], 32 * enemy1GraphTime[i], 0, 32, 32, enemy1Graph, TRUE, FALSE);
 		}
-		DrawFormatString(0, 120, GetColor(255, 255, 255), "%d", enemy1X[i]);
+		DrawFormatString(0, 120, GetColor(255, 255, 255), "enemy %d", enemy1X[i]);
 	}
 }
 
@@ -37,9 +37,13 @@ void Enemy::enemyMove()
 	{
 		if (enemy1Flag[i] == 1)
 		{
-			enemy1X[i] -= 4.0;
+			enemy1X[i] -= player->GetplayerSpeed();
 		}
-		if (enemy1X[i] <= 0 + player->GetScrollX())
+		if (enemy1X[i] <= player->GetScrollX() - 100 && player->GetRoundTripFlag() == 0)
+		{
+			enemy1Flag[i] = 0;
+		}
+		if (enemy1X[i] >= player->GetScrollX() + 1300 && player->GetRoundTripFlag() == 1)
 		{
 			enemy1Flag[i] = 0;
 		}
@@ -56,13 +60,14 @@ void Enemy::enemyBorn()
 			enemy1Flag[i] = 1;
 			enemy1GraphTime[i] = 0;
 			enemy1Time[i] = 0;
-			enemy1X[i] = 1300 + player->GetScrollX();
-			float y = rand() % 2;
-			if (y == 0)
+			enemy1Y[i] = 480;
+			if (player->GetRoundTripFlag() == 0)
 			{
-				enemy1Y[i] = 470;
-			} else {
-				enemy1Y[i] = 450;
+				enemy1X[i] = player->GetScrollX() + 1400;
+			}
+			else
+			{
+				enemy1X[i] = player->GetScrollX() - 300;
 			}
 		}
 	}
