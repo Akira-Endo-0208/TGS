@@ -12,7 +12,6 @@ void GameScene::Initialize()
 	collision = new Collision();
 	input = new Input();  
 	otherScene = new OtherScene();
-
 	player->playerInitialize(input);
 	enemy->enemyInitialize(player);
 	map->Initialize(player);
@@ -48,10 +47,12 @@ void GameScene::Update()
 		collision->collisionUpdate();
 		break;
 	case 5:	// ゲーム画面
+		map->Update();
 		player->playerUpdate();
+		
 		enemy->enemyUpdate();
 		collision->collisionUpdate();
-		map->Update();
+		
 		break;
 	}
 }
@@ -78,9 +79,10 @@ void GameScene::Draw()
 		enemy->enemyDraw();
 		break;
 	case 5:	// ゲーム画面
+		map->Draw();
 		player->playerDraw();
 		enemy->enemyDraw();
-		map->Draw();
+		
 		break;
 	}
 }

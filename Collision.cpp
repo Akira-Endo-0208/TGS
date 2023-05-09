@@ -28,14 +28,30 @@ void Collision::collisionPlayerEnemy()
 			float dX2 = abs((player->GetplayerX() + 32) - enemy->GetenemyX());
 			float dY2 = abs((player->GetplayerY() + player->GetplayerSizeY()) - enemy->GetenemyY());
 			// プレイヤーと敵が当たったら
-			if (dX < 32 && dY < 56 && dX2 < 32 && dY2 < 56)
+
+			if (player->GetSlideFlag() == 0)
 			{
-				player->HitLife();
-				enemy->GetenemyReset();
-				// ゲームオーバー
-				if (player->GetLife() == 0)
+				if (dX < 32 && dY < 56 && dX2 < 32 && dY2 < 56)
 				{
-					otherScene->GameOverScene();
+					player->HitLife();
+					enemy->GetenemyReset();
+					// ゲームオーバー
+					if (player->GetLife() == 0)
+					{
+						otherScene->GameOverScene();
+					}
+				}
+			}
+			else if (player->GetSlideFlag() == 1) {
+				if (dX < 32 && dY < 32 && dX2 < 32 && dY2 < 32)
+				{
+					player->HitLife();
+					enemy->GetenemyReset();
+					// ゲームオーバー
+					if (player->GetLife() == 0)
+					{
+						otherScene->GameOverScene();
+					}
 				}
 			}
 		}
@@ -48,17 +64,17 @@ void Collision::collisionPlayerBlock()
 	{
 		for (int x = 0; x < width; x++)
 		{
-			//if (map->GetBlock(player->GetplayerY() / 64,
-			//	player->GetplayerX() + 1 / 64) == 1 &&
-			//	map->GetBlock(player->GetplayerY() / 64,
-			//		player->GetplayerX() - 1 / 64) == 1 &&
-			//	map->GetBlock((player->GetplayerY() + player->GetplayerSizeY()) / 64,
-			//		(player->GetplayerX() + 32) + 1 / 64) == 1 &&
-			//	map->GetBlock((player->GetplayerY() + player->GetplayerSizeY()) / 64,
-			//		(player->GetplayerX() + 32) - 1 / 64) == 1)
-			//{
-			//	player->HitLife();
-			//}
+			/*if (map->GetBlock(player->GetplayerY() / 64,
+				player->GetplayerX() + 1 / 64) == 1 &&
+				map->GetBlock(player->GetplayerY() / 64,
+					player->GetplayerX() - 1 / 64) == 1 &&
+				map->GetBlock((player->GetplayerY() + player->GetplayerSizeY()) / 64,
+					(player->GetplayerX() + 32) + 1 / 64) == 1 &&
+				map->GetBlock((player->GetplayerY() + player->GetplayerSizeY()) / 64,
+					(player->GetplayerX() + 32) - 1 / 64) == 1)
+			{
+				player->HitLife();
+			}*/
 		}
 	}
 }

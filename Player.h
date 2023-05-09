@@ -15,6 +15,13 @@ public:	// メンバ関数
 	void playerReset();			// リセット
 	int GetplayerX() { return playerX; }
 	int GetplayerY() { return playerY; }
+
+	void SetplayerX(int _playerX) { this->playerX = _playerX; }
+	void SetplayerY(int _playerY) { this->playerY = _playerY; }
+
+	int GetOldPlayerX() { return oldPlayerX; }
+	int GetOldPlayerY() { return oldPlayerY; }
+
 	int GetplayerSizeY() { return playerSizeY; }
 	int GetplayerFlag() { return playerFlag; }
 	int GetLife() { return playerLife; }
@@ -22,10 +29,13 @@ public:	// メンバ関数
 	int GetScrollX() { return scrollX; }
 	int GetRoundTripFlag() { return roundTripFlag; }
 	void SetMaxWidth(int _maxWidth) { this->maxWidth = _maxWidth; }
+	int GetSlideFlag() { return slideFlag; }
 private: // メンバ変数
 	// プレイヤー変数
 	int playerX;			// X軸
 	int playerY;			// Y軸
+	int oldPlayerX;			// X軸
+	int oldPlayerY;			// Y軸
 	int playerSizeY = 56;
 	int playerSpeed = 10;	// スピード値
 	int playerGravity = 0;	// 重力
@@ -41,9 +51,10 @@ private: // メンバ変数
 	int playerTime;
 	int roundTripFlag = 0;
 	int maxWidth = 0;
+	int slideFlag = 0;
 	// 画像
 	int playerGraph = LoadGraph("Resources/Player.kari.png");
-	int backGroundGraph = LoadGraph("Resources/haikei2.png");
+	
 
 	// キーボード変数
 	char key[256] = { 0 }; //最新のキーボード情報用

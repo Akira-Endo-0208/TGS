@@ -17,6 +17,9 @@ void Player::playerUpdate()
 	}
 	GetHitKeyStateAll(key);
 
+	oldPlayerX = playerX;
+	oldPlayerY = playerY;
+
 	if (playerFlag == 1)
 	{
 		playerMove();
@@ -28,8 +31,8 @@ void Player::playerUpdate()
 // 描画
 void Player::playerDraw()
 {
-	DrawGraph(scrollX, 0, backGroundGraph, TRUE);
-	DrawGraph(scrollX - 1280, 0, backGroundGraph, TRUE);
+	
+	
 	if (playerFlag == 1)
 	{
 		DrawBox(playerScreenX, playerY, playerScreenX + 32, playerY + playerSizeY, GetColor(255, 255, 255), true);
@@ -46,7 +49,7 @@ void Player::playerDraw()
 // 動作
 void Player::playerMove()
 {
-	if (playerY <= 500 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && playerCanJump < 2)
+	if (playerY <= 659 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && playerCanJump < 2)
 	{
 		playerCanJump++;
 		playerGravity = -20;
@@ -58,19 +61,21 @@ void Player::playerMove()
 		playerY += playerGravity;
 	}
 
-	if (playerY >= 500)
+	if (playerY >= 659)
 	{
-		playerY = 500;
+		playerY = 659;
 		playerGravity = 0;
 		playerCanJump = 0;
 	}
 	
 	// スライディング
-	if (playerY >= 500 && key[KEY_INPUT_S] == 1)
+	if (playerY >= 659 && key[KEY_INPUT_S] == 1)
 	{
+		slideFlag = 1;
 		playerSizeY = -5;
 	} else {
 		playerSizeY = -56;
+		slideFlag = 0;
 	}
 }
 

@@ -4,9 +4,6 @@
 const int width = 150;
 const int length = 12;
 
-const int width = 20;
-const int length = 11;
-
 class Map
 {
 public:
@@ -15,6 +12,8 @@ public:
 	void Draw();		// •`‰æ
 	int GetBlock(int y,int x) { return mapData[y][x]; }
 	int GetMapStageCount() { return mapStageCount; }
+
+	
 private:
 	enum MAPBLOCK
 	{
@@ -26,8 +25,11 @@ private:
 	int mapData[length][width] = {};
 	int mapStageCount = 1;
 
-	int blockGraph = LoadGraph("Resources/block2.png");
 	
+	int blockGraph = LoadGraph("Resources/block2.png");
+	int backGroundGraph = LoadGraph("Resources/haikei2.png");
+
 	Player* player_ = nullptr;
+	
 	
 };
