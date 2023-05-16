@@ -1,7 +1,6 @@
 #pragma once
 #include "Input.h"
 
-
 class OtherScene
 {
 public: // メンバ関数
@@ -12,11 +11,12 @@ public: // メンバ関数
 	int TitleScene() { return scene = 0; }
 	int GameOverScene() { return scene = 2; }
 	int GameClaerScene() { return scene = 3; }
+	int GetSelectScene() { return selectScene; }
 
 private: // メンバ変数
 	// シーン切り替え
 	int scene = 0;
-	int selectScene = 5;
+	int selectScene = 4;
 
 	// キーボード変数
 	char key[256] = { 0 }; //最新のキーボード情報用
@@ -26,7 +26,7 @@ private: // メンバ変数
 	int titleGraph = LoadGraph("Resources/title.png");
 	int stageSelectGraph = LoadGraph("Resources/stageSelect.png");
 	int gameOverGraph = LoadGraph("Resources/gameOver_.png");
-	int gameClearGraph = LoadGraph("Resources/GameClear_.png");
+	int gameClearGraph = LoadGraph("Resources/clear_kari.png");
 
 	// ポインタ
 	Input* input;

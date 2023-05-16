@@ -30,13 +30,18 @@ void Collision::collisionPlayerEnemy()
 			// プレイヤーと敵が当たったら
 			if (dX < 32 && dY < 56 && dX2 < 32 && dY2 < 56)
 			{
-				player->HitLife();
-				enemy->GetenemyReset();
-				// ゲームオーバー
-				if (player->GetLife() == 0)
+				if (map->GetMapStageCount() == 4)
 				{
-					otherScene->GameOverScene();
+					player->playerReset();
+				} else {
+					player->HitLife();
+					// ゲームオーバー
+					if (player->GetLife() == 0)
+					{
+						otherScene->GameOverScene();
+					}
 				}
+				enemy->GetenemyReset();
 			}
 		}
 	}

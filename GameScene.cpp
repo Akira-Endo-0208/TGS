@@ -8,7 +8,6 @@ void GameScene::Initialize()
 {
 	player = new Player();
 	enemy = new Enemy();
-	sprite = new Sprite();
 	map = new Map();
 	collision = new Collision();
 	input = new Input();  
@@ -16,8 +15,7 @@ void GameScene::Initialize()
 
 	player->playerInitialize(input);
 	enemy->enemyInitialize(player);
-	sprite->spriteInitialize(player);
-	map->Initialize(player);
+	map->Initialize(player, otherScene);
 	collision->collisionInitialize(player, enemy, otherScene, map);
 	otherScene->OtherSceneInitialize();
 
@@ -36,7 +34,6 @@ void GameScene::Update()
 	case 1:	// ステージセレクト
 		player->playerReset();
 		enemy->enemyReset();
-		sprite->spriteReset();
 		otherScene->OtherSceneUpdate();
 		break;
 	case 2:	// ゲームオーバー
@@ -48,14 +45,24 @@ void GameScene::Update()
 	case 4:	// チュートリアル
 		player->playerUpdate();
 		enemy->enemyUpdate();
-		sprite->spriteUpdate();
 		collision->collisionUpdate();
 		map->Update();
 		break;
-	case 5:	// ゲーム画面
+	case 5:	// ゲーム画面1
 		player->playerUpdate();
 		enemy->enemyUpdate();
-		//sprite->spriteUpdate();
+		collision->collisionUpdate();
+		map->Update();
+		break;
+	case 6:	// ゲーム画面2
+		player->playerUpdate();
+		enemy->enemyUpdate();
+		collision->collisionUpdate();
+		map->Update();
+		break;
+	case 7:	// ゲーム画面3
+		player->playerUpdate();
+		enemy->enemyUpdate();
 		collision->collisionUpdate();
 		map->Update();
 		break;
@@ -80,13 +87,21 @@ void GameScene::Draw()
 		otherScene->OtherSceneDraw();
 		break;
 	case 4:	// チュートリアル
-		sprite->spriteDraw();
 		player->playerDraw();
 		enemy->enemyDraw();
 		map->Draw();
 		break;
-	case 5:	// ゲーム画面
-		//sprite->spriteDraw();
+	case 5:	// ゲーム画面1
+		player->playerDraw();
+		enemy->enemyDraw();
+		map->Draw();
+		break;
+	case 6:	// ゲーム画面2
+		player->playerDraw();
+		enemy->enemyDraw();
+		map->Draw();
+		break;
+	case 7:	// ゲーム画面3
 		player->playerDraw();
 		enemy->enemyDraw();
 		map->Draw();

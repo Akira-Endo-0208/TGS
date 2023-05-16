@@ -3,7 +3,6 @@
 #include "Enemy.h"
 #include "Collision.h"
 #include "Input.h"
-#include "Sprite.h"
 #include "Map.h"
 #include "OtherScene.h"
 
@@ -20,7 +19,6 @@ private: // メンバ変数
 	Enemy* enemy;
 	Collision* collision;
 	Input* input;
-	Sprite* sprite;
 	Map* map;
 	OtherScene* otherScene;
 };

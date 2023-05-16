@@ -35,11 +35,8 @@ void Player::playerDraw()
 		//DrawBox(playerScreenX, playerY, playerScreenX + 32, playerY + playerSizeY, GetColor(255, 255, 255), true);
 		DrawRectGraph(playerScreenX, playerY + playerSizeY, 38 * playerGraphTime, 0, 38, 56, playerGraph, TRUE, FALSE);
 	}
-	//DrawFormatString(0, 0, GetColor(255, 255, 255), "SPACE   JUMP,2JUMP");
-	//DrawFormatString(0, 20, GetColor(255, 255, 255), "S       SLIDING");
-	DrawFormatString(0, 40, GetColor(255, 255, 255), "LIFE    %d", playerLife);
 	//DrawFormatString(0, 60, GetColor(255, 255, 255), "playerScreenX %d", playerScreenX);
-	DrawFormatString(0, 80, GetColor(255, 255, 255), "scrollX %d", scrollX);
+	//DrawFormatString(0, 80, GetColor(255, 255, 255), "scrollX %d", scrollX);
 	//DrawFormatString(0, 100, GetColor(255, 255, 255), "playerX %d", playerX);
 }
 
@@ -145,4 +142,4 @@ void Player::playerReset()
 	playerGraphTime = 0;
 	playerTime = 0;
 	roundTripFlag = 0;
-} 
+}
