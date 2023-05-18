@@ -146,8 +146,6 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="OtherScene.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="Tutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision.h" />
@@ -157,7 +155,6 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="OtherScene.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

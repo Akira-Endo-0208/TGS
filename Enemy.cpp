@@ -26,7 +26,7 @@ void Enemy::enemyDraw()
 			//DrawBox(enemy1X[i] - player->GetScrollX(), enemy1Y[i], enemy1X[i] - player->GetScrollX() + 32, enemy1Y[i] + 32, GetColor(255, 0, 0), true);
 			DrawRectGraph(enemy1X[i] - player->GetScrollX(), enemy1Y[i], 32 * enemy1GraphTime[i], 0, 32, 32, enemy1Graph, TRUE, FALSE);
 		}
-		DrawFormatString(0, 120, GetColor(255, 255, 255), "enemy %d", enemy1X[i]);
+		//DrawFormatString(0, 120, GetColor(255, 255, 255), "enemy %d", enemy1X[i]);
 	}
 }
 
