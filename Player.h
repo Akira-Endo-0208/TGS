@@ -46,7 +46,7 @@ private: // メンバ変数
 	// 画像
 	int playerGraph = LoadGraph("Resources/Player.kari.png");
 	int backGroundGraph = LoadGraph("Resources/haikei2.png");
-
+	int jumpSoundHandle = LoadSoundMem("Resources/sounds/jump.wav");
 	// キーボード変数
 	char key[256] = { 0 }; //最新のキーボード情報用
 	char oldkey[256] = { 0 };//1ループ（フレーム）前のキーボード情報

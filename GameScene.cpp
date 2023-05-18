@@ -31,6 +31,28 @@ void GameScene::Update()
 	switch (otherScene->GetScene())
 	{
 	case 0:	// タイトル
+		if (CheckSoundMem(playBGMHandle) == 1)
+		{
+			StopSoundMem(playBGMHandle);
+		}
+
+		if (CheckSoundMem(gameClearHandle) == 1)
+		{
+			StopSoundMem(gameClearHandle);
+		}
+		
+		if (CheckSoundMem(gameOverHandle) == 1)
+		{
+			StopSoundMem(gameOverHandle);
+		}
+
+		playOnlyFlag = 0;
+
+		if (CheckSoundMem(titleBGMHandle) == 0)
+		{
+			PlaySoundMem(titleBGMHandle, DX_PLAYTYPE_BACK, true);
+		}
+
 		otherScene->OtherSceneUpdate();
 		break;
 	case 1:	// ステージセレクト
@@ -40,9 +62,27 @@ void GameScene::Update()
 		otherScene->OtherSceneUpdate();
 		break;
 	case 2:	// ゲームオーバー
+		if (CheckSoundMem(playBGMHandle) == 1)
+		{
+			StopSoundMem(playBGMHandle);
+		}
+		if (playOnlyFlag == 0)
+		{
+			PlaySoundMem(gameOverHandle, DX_PLAYTYPE_BACK, true);
+			playOnlyFlag = 1;
+		}
 		otherScene->OtherSceneUpdate();
 		break;
 	case 3:	// ゲームクリア
+		if (CheckSoundMem(playBGMHandle) == 1)
+		{
+			StopSoundMem(playBGMHandle);
+		}
+		if (playOnlyFlag == 0)
+		{
+			PlaySoundMem(gameClearHandle, DX_PLAYTYPE_BACK, true);
+			playOnlyFlag = 1;
+		}
 		otherScene->OtherSceneUpdate();
 		break;
 	case 4:	// チュートリアル
@@ -53,6 +93,14 @@ void GameScene::Update()
 		map->Update();
 		break;
 	case 5:	// ゲーム画面
+		if (CheckSoundMem(titleBGMHandle) == 1)
+		{
+			StopSoundMem(titleBGMHandle);
+		}
+		if (CheckSoundMem(playBGMHandle) == 0)
+		{
+			PlaySoundMem(playBGMHandle, DX_PLAYTYPE_BACK, true);
+		}
 		player->playerUpdate();
 		enemy->enemyUpdate();
 		//sprite->spriteUpdate();

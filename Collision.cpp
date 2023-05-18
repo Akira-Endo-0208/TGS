@@ -30,6 +30,7 @@ void Collision::collisionPlayerEnemy()
 			// プレイヤーと敵が当たったら
 			if (dX < 32 && dY < 56 && dX2 < 32 && dY2 < 56)
 			{
+				PlaySoundMem(damageSoundHandle, DX_PLAYTYPE_BACK, true);
 				player->HitLife();
 				enemy->GetenemyReset();
 				// ゲームオーバー

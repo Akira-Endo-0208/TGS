@@ -23,4 +23,11 @@ private: // メンバ変数
 	Sprite* sprite;
 	Map* map;
 	OtherScene* otherScene;
+
+	int titleBGMHandle = LoadSoundMem("Resources/sounds/TitleBGM.wav");
+	int playBGMHandle = LoadSoundMem("Resources/sounds/PlayBGM.wav");
+	int gameClearHandle = LoadSoundMem("Resources/sounds/GameClear.wav");
+	int gameOverHandle = LoadSoundMem("Resources/sounds/GameOver.wav");
+
+	int playOnlyFlag = 0;
 };

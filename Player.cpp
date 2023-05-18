@@ -49,8 +49,10 @@ void Player::playerMove()
 	// ジャンプ
 	if (playerY <= 512 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && playerCanJump < 2)
 	{
+		PlaySoundMem(jumpSoundHandle, DX_PLAYTYPE_BACK, true);
 		playerCanJump++;
 		playerGravity = -20;
+		
 	}
 
 	if (playerCanJump < 3)
