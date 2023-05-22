@@ -25,6 +25,7 @@ private:
 	int mapStageCount = 0;
 
 	int blockGraph = LoadGraph("Resources/block2.png");
+	int lifeGraph = LoadGraph("Resources/life.png");
 	
 	Player* player_ = nullptr;
 	OtherScene* otherScene_ = nullptr;

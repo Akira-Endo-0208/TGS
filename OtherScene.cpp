@@ -55,7 +55,7 @@ void OtherScene::OtherSceneDraw()
 		DrawFormatString(0, 20, GetColor(255, 255, 255), "キーA->-  キーD->+  (%d)", selectScene);
 		break;
 	case 2: // ゲームオーバー
-		DrawFormatString(0, 0, GetColor(255, 255, 255), "ゲームオーバー   SPACE->タイトル");
+		DrawGraph(0, 0, gameOverGraph, TRUE);
 		break;
 	case 3: // ゲームクリア
 		DrawGraph(0, 0, gameClearGraph, TRUE);

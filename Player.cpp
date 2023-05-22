@@ -33,7 +33,12 @@ void Player::playerDraw()
 	if (playerFlag == 1)
 	{
 		//DrawBox(playerScreenX, playerY, playerScreenX + 32, playerY + playerSizeY, GetColor(255, 255, 255), true);
-		DrawRectGraph(playerScreenX, playerY + playerSizeY, 38 * playerGraphTime, 0, 38, 56, playerGraph, TRUE, FALSE);
+		if (roundTripFlag == 0)
+		{
+			DrawRectGraph(playerScreenX, playerY + playerSizeY, 38 * playerGraphTime, 0, 38, 56, playerGraph, TRUE, FALSE);
+		} else {
+			DrawRectGraph(playerScreenX, playerY + playerSizeY, 38 * playerGraphTime, 56, 38, 56, playerGraph, TRUE, FALSE);
+		}
 	}
 	//DrawFormatString(0, 60, GetColor(255, 255, 255), "playerScreenX %d", playerScreenX);
 	//DrawFormatString(0, 80, GetColor(255, 255, 255), "scrollX %d", scrollX);
