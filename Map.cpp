@@ -142,7 +142,7 @@ void Map::Draw()
 	{
 		DrawFormatString(0, 0, GetColor(255, 255, 255), "SPACE   JUMP,2JUMP");
 	} else {
-		DrawFormatString(0, 40, GetColor(255, 255, 255), "LIFE    %d", player_->GetLife());
+		DrawRectGraph(10, 40, 0, 0, 36 * player_->GetLife(), 32, lifeGraph, TRUE, FALSE);
 	}
 
 	for (int y = 0; y < length; y++)

@@ -2,7 +2,7 @@
 #include "GameScene.h"
 
 
-const char TITLE[] = "3161_ROBOT RUN";
+const char TITLE[] = "ROBOT RUN";
 
 // ƒvƒƒOƒ‰ƒ€‚Í WinMain ‚©‚çn‚Ü‚è‚Ü‚·
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
