@@ -30,10 +30,13 @@ void Collision::collisionPlayerEnemy()
 			// プレイヤーと敵が当たったら
 			if (dX < 32 && dY < 56 && dX2 < 32 && dY2 < 56)
 			{
+				
 				if (map->GetMapStageCount() == 4)
 				{
 					player->playerReset();
-				} else {
+				}
+				else {
+					PlaySoundMem(damageSoundHandle, DX_PLAYTYPE_BACK, true);
 					player->HitLife();
 					// ゲームオーバー
 					if (player->GetLife() == 0)
