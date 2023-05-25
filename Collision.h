@@ -7,7 +7,7 @@
 
 class Collision
 {
-public: // メンバ関数
+public: // 繝｡繝ｳ繝宣未謨ｰ
 	void collisionInitialize(Player* player_, Enemy* enemy_, OtherScene* otherScene_, Map* map_);
 	void collisionUpdate();
 	void collisionPlayerEnemy();
@@ -16,12 +16,13 @@ public: // メンバ関数
 
 	
 
-private: // メンバ変数
-	// ポインタ
+private: // 繝｡繝ｳ繝仙､画焚
+	// 繝昴う繝ｳ繧ｿ
 	Player* player;
 	Enemy* enemy;
 	Map* map;
 	OtherScene* otherScene;
-	int damageSoundHandle = LoadSoundMem("Resources/sounds/damage.wav");
-	
+
+	int damageSoundHandle = LoadSoundMem("Resources/Sounds/damage.wav");
+
 };

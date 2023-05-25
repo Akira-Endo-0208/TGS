@@ -25,6 +25,22 @@ void Player::playerUpdate()
 	}
 }
 
+void Player::playerTutorialUpdate()
+{
+	for (int i = 0; i < 256; ++i)
+	{
+		oldkey[i] = key[i];
+	}
+	GetHitKeyStateAll(key);
+
+	if (playerFlag == 1)
+	{
+		playerMove();
+		playerMoveTutorialScroll();
+		playerMoveGraph();
+	}
+}
+
 // 描画
 void Player::playerDraw()
 {
@@ -47,9 +63,25 @@ void Player::playerDraw()
 	//DrawFormatString(0, 100, GetColor(255, 255, 255), "playerX %d", playerX);
 }
 
+void Player::playerTutorialDraw()
+{
+	if (roundTripFlag == 0)
+	{
+		DrawGraph(graphscrollX, 0, TutorialGraph1, TRUE);
+		DrawRectGraph(playerScreenX, playerY + playerSizeY, 38 * playerGraphTime, 0, 38, 56, playerGraph, TRUE, FALSE);
+	}
+	else {
+		DrawGraph(graphscrollX, 0, TutorialGraph2, TRUE);
+		DrawRectGraph(playerScreenX, playerY + playerSizeY, 38 * playerGraphTime, 56, 38, 56, playerGraph, TRUE, FALSE);
+	}
+}
+
 // 動作
 void Player::playerMove()
 {
+	// 移動
+	playerX += playerSpeed;
+
 	// ジャンプ
 	if (playerY <= 512 && key[KEY_INPUT_SPACE] == 1 && oldkey[KEY_INPUT_SPACE] == 0 && playerCanJump < 2)
 	{
@@ -84,8 +116,6 @@ void Player::playerMove()
 // スクロール
 void Player::playerMoveScroll()
 {
-	playerX += playerSpeed;
-
 	if (playerScreenX > 1280 / 2 && playerX <= maxWidth)
 	{
 		scrollX += playerSpeed;
@@ -123,6 +153,40 @@ void Player::playerMoveScroll()
 	playerScreenX = playerX - scrollX;
 }
 
+void Player::playerMoveTutorialScroll()
+{
+	if (playerScreenX > 1280 / 2 && playerX <= maxWidth)
+	{
+		scrollX += playerSpeed;
+		graphscrollX -= playerSpeed;
+	}
+
+	if (playerX >= maxWidth + 640)
+	{
+		roundTripFlag = 1;
+	}
+
+	if (roundTripFlag == 1)
+	{
+		tutorialEnemyFlag = 0;
+		playerSpeed = -5;
+	} else {
+		tutorialEnemyFlag = 1;
+	}
+
+	if (playerX > maxWidth)
+	{
+		scrollX = maxWidth - 640;
+	}
+
+	if (playerX < 650)
+	{
+		scrollX = 0;
+	}
+
+	playerScreenX = playerX - scrollX;
+}
+
 // グラフィック
 void Player::playerMoveGraph()
 {
@@ -141,7 +205,7 @@ void Player::playerMoveGraph()
 void Player::playerReset()
 {
 	playerX = 200;
-	playerY = 512;
+	playerY = 520;
 	playerSpeed = 5;
 	playerFlag = 1;
 	playerLife = 3;
@@ -151,4 +215,16 @@ void Player::playerReset()
 	playerGraphTime = 0;
 	playerTime = 0;
 	roundTripFlag = 0;
+
+}
+
+void Player::playerTutorialReset()
+{
+	playerX = maxWidth + 640;
+	playerY = 520;
+	scrollX = 0;
+	playerScreenX = 0;
+	graphscrollX = -maxWidth + 640;
+	playerGraphTime = 0;
+	playerTime = 0;
 }

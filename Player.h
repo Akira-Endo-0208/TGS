@@ -8,14 +8,20 @@ class Player
 public:	// メンバ関数
 
 	void playerInitialize(Input* input_);	// 初期化
-	void playerUpdate();		// 更新
-	void playerDraw();			// 描画
-	void playerMove();			// 動作
-	void playerMoveGraph();		// グラフィック
-	void playerMoveScroll();	// スクロール
-	void playerReset();			// リセット
-	int GetPlayerX() { return playerX; }
-	int GetPlayerY() { return playerY; }
+
+	void playerUpdate();			// 更新
+	void playerTutorialUpdate();	// チュートリアル更新
+	void playerDraw();				// 描画
+	void playerTutorialDraw();		// チュートリアル描画
+	void playerMove();				// 動作
+	void playerMoveGraph();			// グラフィック
+	void playerMoveScroll();		// スクロール
+	void playerMoveTutorialScroll();// チュートリアルスクロール
+	void playerReset();				// リセット
+	void playerTutorialReset();		// チュートリアルリセット
+	int GetplayerX() { return playerX; }
+	int GetplayerY() { return playerY; }
+
 	int GetplayerSizeY() { return playerSizeY; }
 	int GetplayerSpeed() { return playerSpeed; }
 	int GetplayerFlag() { return playerFlag; }
@@ -23,6 +29,8 @@ public:	// メンバ関数
 	int HitLife() { return playerLife -= 1; }
 	int GetScrollX() { return scrollX; }
 	int GetRoundTripFlag() { return roundTripFlag; }
+
+	int GetTutorialEnemyFlag() { return tutorialEnemyFlag; }
 
 	void SetMaxWidth(int _maxWidth) { this->maxWidth = _maxWidth; }
 
@@ -47,10 +55,13 @@ private: // メンバ変数
 	int playerTime;
 	int roundTripFlag = 0;
 	int maxWidth = 0;
+	int tutorialEnemyFlag = 0;
 	// 画像
-	int playerGraph = LoadGraph("Resources/Player.kari.png");
-	int backGroundGraph = LoadGraph("Resources/haikei2.png");
-	int jumpSoundHandle = LoadSoundMem("Resources/sounds/jump.wav");
+	int playerGraph = LoadGraph("Resources/Player.png");
+	int backGroundGraph = LoadGraph("Resources/BackGround_1.png");
+	int TutorialGraph1 = LoadGraph("Resources/Tutorial_1.png");
+	int TutorialGraph2 = LoadGraph("Resources/Tutorial_2.png");
+	int jumpSoundHandle = LoadSoundMem("Resources/Sounds/jump.wav");
 	// キーボード変数
 	char key[256] = { 0 }; //最新のキーボード情報用
 	char oldkey[256] = { 0 };//1ループ（フレーム）前のキーボード情報

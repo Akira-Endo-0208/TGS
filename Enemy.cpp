@@ -3,15 +3,15 @@
 #include <stdlib.h>
 #include <time.h>
 
-// ‰Šú‰»
+// åˆæœŸåŒ–
 void Enemy::enemyInitialize(Player* player_)
 {
-	//  timeŠÖ”‚ğg‚Á‚½—”‚Ìí‚Ìİ’è
+	//  timeé–¢æ•°ã‚’ä½¿ã£ãŸä¹±æ•°ã®ç¨®ã®è¨­å®š
 	srand((unsigned int)time(NULL));
 	player = player_;
 }
 
-// XV
+// æ›´æ–°
 void Enemy::enemyUpdate()
 {
 	enemyMove();
@@ -19,7 +19,7 @@ void Enemy::enemyUpdate()
 	enemyMoveGraph();
 }
 
-// •`‰æ
+// æç”»
 void Enemy::enemyDraw()
 {
 	for (int i = 0; i < 10; i++)
@@ -38,7 +38,7 @@ void Enemy::enemyDraw()
 	}
 }
 
-// “®ì
+// å‹•ä½œ
 void Enemy::enemyMove()
 {
 	for (int i = 0; i < 10; i++)
@@ -58,13 +58,16 @@ void Enemy::enemyMove()
 	}
 }
 
-// ƒŠƒXƒ|[ƒ“
+// ãƒªã‚¹ãƒãƒ¼ãƒ³
 void Enemy::enemyBorn()
 {
+
 	for (int i = 0; i < 10; i++)
+
+	if (player->GetTutorialEnemyFlag() == 0)
+
 	{
-		if (enemy1Flag[i] == 0)
-		{
+
 			enemy1Flag[i] = 1;
 			enemy1GraphTime[i] = 0;
 			enemy1Time[i] = 0;
@@ -76,10 +79,26 @@ void Enemy::enemyBorn()
 			else
 			{
 				enemy1X[i] = player->GetScrollX() - 300 + rand() % 500;
+
+			if (enemy1Flag[i] == 0)
+			{
+				enemy1Flag[i] = 1;
+				enemy1GraphTime[i] = 0;
+				enemy1Time[i] = 0;
+				enemy1Y[i] = 480;
+				if (player->GetRoundTripFlag() == 0)
+				{
+					enemy1X[i] = player->GetScrollX() + 1400;
+				}
+				else
+				{
+					enemy1X[i] = player->GetScrollX() - 300;
+				}
+
 			}
 		}
-	}
 }
+
 
 void Enemy::enemyMoveGraph()
 {
@@ -98,7 +117,7 @@ void Enemy::enemyMoveGraph()
 	}
 }
 
-// ƒŠƒZƒbƒg
+// ãƒªã‚»ãƒƒãƒˆ
 void Enemy::enemyReset()
 {
 	for (int i = 0; i < 10; i++)

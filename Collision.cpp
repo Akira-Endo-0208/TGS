@@ -31,13 +31,11 @@ void Collision::collisionPlayerEnemy()
 			// プレイヤーと敵が当たったら
 			if (dX < 32 && dY < 56 && dX2 < 32 && dY2 < 56)
 			{
-				
+				PlaySoundMem(damageSoundHandle, DX_PLAYTYPE_BACK, true);
 				if (map->GetMapStageCount() == 4)
 				{
-					player->playerReset();
-				}
-				else {
-					PlaySoundMem(damageSoundHandle, DX_PLAYTYPE_BACK, true);
+					player->playerTutorialReset();
+				} else {
 					player->HitLife();
 					// ゲームオーバー
 					if (player->GetLife() == 0)
@@ -76,6 +74,11 @@ void Collision::collisionPlayerClaer()
 {
 	if (player->GetplayerFlag() == 1 && player->GetPlayerX() <= 0 && player->GetRoundTripFlag() == 1)
 	{
-		otherScene->GameClaerScene();
+		if (map->GetMapStageCount() == 4)
+		{
+			otherScene->SelectScene();
+		} else {
+			otherScene->GameClaerScene();
+		}
 	}
 }
