@@ -46,6 +46,8 @@ void Player::playerDraw()
 {
 	DrawGraph(graphscrollX, 0, backGroundGraph, TRUE);
 	DrawGraph(graphscrollX + 1280, 0, backGroundGraph, TRUE);
+
+	/*DrawBox(playerScreenX, playerY, playerScreenX + 32, playerY - 56, GetColor(255, 255, 255), false);*/
 	if (playerFlag == 1)
 	{
 		//DrawBox(playerScreenX, playerY, playerScreenX + 32, playerY + playerSizeY, GetColor(255, 255, 255), true);

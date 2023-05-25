@@ -6,7 +6,9 @@
 class Player
 {
 public:	// メンバ関数
+
 	void playerInitialize(Input* input_);	// 初期化
+
 	void playerUpdate();			// 更新
 	void playerTutorialUpdate();	// チュートリアル更新
 	void playerDraw();				// 描画
@@ -19,6 +21,7 @@ public:	// メンバ関数
 	void playerTutorialReset();		// チュートリアルリセット
 	int GetplayerX() { return playerX; }
 	int GetplayerY() { return playerY; }
+
 	int GetplayerSizeY() { return playerSizeY; }
 	int GetplayerSpeed() { return playerSpeed; }
 	int GetplayerFlag() { return playerFlag; }
@@ -26,8 +29,12 @@ public:	// メンバ関数
 	int HitLife() { return playerLife -= 1; }
 	int GetScrollX() { return scrollX; }
 	int GetRoundTripFlag() { return roundTripFlag; }
+
 	int GetTutorialEnemyFlag() { return tutorialEnemyFlag; }
+
 	void SetMaxWidth(int _maxWidth) { this->maxWidth = _maxWidth; }
+
+	
 private: // メンバ変数
 	// プレイヤー変数
 	int playerX;			// X軸

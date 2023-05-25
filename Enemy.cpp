@@ -1,14 +1,17 @@
 #include "DxLib.h"
 #include "Enemy.h"
+#include <stdlib.h>
+#include <time.h>
 
-
-// ‰Šú‰»
+// åˆæœŸåŒ–
 void Enemy::enemyInitialize(Player* player_)
 {
+	//  timeé–¢æ•°ã‚’ä½¿ã£ãŸä¹±æ•°ã®ç¨®ã®è¨­å®š
+	srand((unsigned int)time(NULL));
 	player = player_;
 }
 
-// XV
+// æ›´æ–°
 void Enemy::enemyUpdate()
 {
 	enemyMove();
@@ -16,14 +19,14 @@ void Enemy::enemyUpdate()
 	enemyMoveGraph();
 }
 
-// •`‰æ
+// æç”»
 void Enemy::enemyDraw()
 {
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		if (enemy1Flag[i] == 1)
 		{
-			//DrawBox(enemy1X[i] - player->GetScrollX(), enemy1Y[i], enemy1X[i] - player->GetScrollX() + 32, enemy1Y[i] + 32, GetColor(255, 0, 0), true);
+			/*DrawBox(enemy1X[i] - player->GetScrollX(), enemy1Y[i], enemy1X[i] - player->GetScrollX() + 32, enemy1Y[i] + 32, GetColor(255, 0, 0), true);*/
 			if (player->GetRoundTripFlag() == 0)
 			{
 				DrawRectGraph(enemy1X[i] - player->GetScrollX(), enemy1Y[i], 32 * enemy1GraphTime[i], 0, 32, 32, enemy1Graph, TRUE, FALSE);
@@ -35,10 +38,10 @@ void Enemy::enemyDraw()
 	}
 }
 
-// “®ì
+// å‹•ä½œ
 void Enemy::enemyMove()
 {
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		if (enemy1Flag[i] == 1)
 		{
@@ -55,13 +58,28 @@ void Enemy::enemyMove()
 	}
 }
 
-// ƒŠƒXƒ|[ƒ“
+// ãƒªã‚¹ãƒãƒ¼ãƒ³
 void Enemy::enemyBorn()
 {
+
+	for (int i = 0; i < 10; i++)
+
 	if (player->GetTutorialEnemyFlag() == 0)
+
 	{
-		for (int i = 0; i < 1; i++)
-		{
+
+			enemy1Flag[i] = 1;
+			enemy1GraphTime[i] = 0;
+			enemy1Time[i] = 0;
+			enemy1Y[i] = 200 + rand() % 460;
+			if (player->GetRoundTripFlag() == 0)
+			{
+				enemy1X[i] = player->GetScrollX() + 1400 + rand() % 500;
+			}
+			else
+			{
+				enemy1X[i] = player->GetScrollX() - 300 + rand() % 500;
+
 			if (enemy1Flag[i] == 0)
 			{
 				enemy1Flag[i] = 1;
@@ -76,14 +94,15 @@ void Enemy::enemyBorn()
 				{
 					enemy1X[i] = player->GetScrollX() - 300;
 				}
+
 			}
 		}
-	}
 }
+
 
 void Enemy::enemyMoveGraph()
 {
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		enemy1Time[i]++;
 		if (enemy1GraphTime[i] != 11 && enemy1Time[i] == 5)
@@ -98,10 +117,10 @@ void Enemy::enemyMoveGraph()
 	}
 }
 
-// ƒŠƒZƒbƒg
+// ãƒªã‚»ãƒƒãƒˆ
 void Enemy::enemyReset()
 {
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		enemy1Flag[i] = 0;
 	}
