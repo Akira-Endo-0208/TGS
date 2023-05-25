@@ -13,6 +13,9 @@ public: // メンバ関数
 	void collisionPlayerEnemy();
 	void collisionPlayerBlock();
 	void collisionPlayerClaer();
+
+	
+
 private: // メンバ変数
 	// ポインタ
 	Player* player;
@@ -20,4 +23,5 @@ private: // メンバ変数
 	Map* map;
 	OtherScene* otherScene;
 	int damageSoundHandle = LoadSoundMem("Resources/sounds/damage.wav");
+	
 };

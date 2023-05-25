@@ -18,7 +18,8 @@ void GameScene::Initialize()
 	map->Initialize(player, otherScene);
 	collision->collisionInitialize(player, enemy, otherScene, map);
 	otherScene->OtherSceneInitialize();
-
+	// 音量の設定
+	ChangeVolumeSoundMem(180, titleBGMHandle);
 	// 乱数の初期化
 	srand(time(NULL));
 }
@@ -86,11 +87,13 @@ void GameScene::Update()
 		player->playerUpdate();
 		enemy->enemyUpdate();
 		collision->collisionUpdate();
+
 		map->Update();
 		break;
 	case 5:	// ゲーム画面1
 		if (CheckSoundMem(titleBGMHandle) == 1)
 		{
+
 			StopSoundMem(titleBGMHandle);
 		}
 		if (CheckSoundMem(playBGMHandle) == 0)
