@@ -58,21 +58,24 @@ void Enemy::enemyMove()
 // ƒŠƒXƒ|[ƒ“
 void Enemy::enemyBorn()
 {
-	for (int i = 0; i < 1; i++)
+	if (player->GetTutorialEnemyFlag() == 0)
 	{
-		if (enemy1Flag[i] == 0)
+		for (int i = 0; i < 1; i++)
 		{
-			enemy1Flag[i] = 1;
-			enemy1GraphTime[i] = 0;
-			enemy1Time[i] = 0;
-			enemy1Y[i] = 480;
-			if (player->GetRoundTripFlag() == 0)
+			if (enemy1Flag[i] == 0)
 			{
-				enemy1X[i] = player->GetScrollX() + 1400;
-			}
-			else
-			{
-				enemy1X[i] = player->GetScrollX() - 300;
+				enemy1Flag[i] = 1;
+				enemy1GraphTime[i] = 0;
+				enemy1Time[i] = 0;
+				enemy1Y[i] = 480;
+				if (player->GetRoundTripFlag() == 0)
+				{
+					enemy1X[i] = player->GetScrollX() + 1400;
+				}
+				else
+				{
+					enemy1X[i] = player->GetScrollX() - 300;
+				}
 			}
 		}
 	}

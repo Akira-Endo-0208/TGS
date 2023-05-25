@@ -30,10 +30,9 @@ void Collision::collisionPlayerEnemy()
 			// ƒvƒŒƒCƒ„[‚Æ“G‚ª“–‚½‚Á‚½‚ç
 			if (dX < 32 && dY < 56 && dX2 < 32 && dY2 < 56)
 			{
-				
 				if (map->GetMapStageCount() == 4)
 				{
-					player->playerReset();
+					player->playerTutorialReset();
 				}
 				else {
 					PlaySoundMem(damageSoundHandle, DX_PLAYTYPE_BACK, true);

@@ -83,7 +83,7 @@ void GameScene::Update()
 		otherScene->OtherSceneUpdate();
 		break;
 	case 4:	// チュートリアル
-		player->playerUpdate();
+		player->playerTutorialUpdate();
 		enemy->enemyUpdate();
 		collision->collisionUpdate();
 		map->Update();
@@ -152,7 +152,7 @@ void GameScene::Draw()
 		otherScene->OtherSceneDraw();
 		break;
 	case 4:	// チュートリアル
-		player->playerDraw();
+		player->playerTutorialDraw();
 		enemy->enemyDraw();
 		map->Draw();
 		break;

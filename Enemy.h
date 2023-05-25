@@ -27,7 +27,7 @@ private: // メンバ変数
 	int enemy1Time[5];
 
 	// 画像
-	int enemy1Graph = LoadGraph("Resources/suraimu-kari.png");
+	int enemy1Graph = LoadGraph("Resources/Enemy_1.png");
 
 	// ポインタ
 	Player* player;

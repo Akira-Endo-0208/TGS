@@ -19,5 +19,5 @@ private: // ƒƒ“ƒo•Ï”
 	Enemy* enemy;
 	Map* map;
 	OtherScene* otherScene;
-	int damageSoundHandle = LoadSoundMem("Resources/sounds/damage.wav");
+	int damageSoundHandle = LoadSoundMem("Resources/Sounds/damage.wav");
 };
