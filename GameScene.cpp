@@ -34,16 +34,6 @@ void GameScene::Update()
 			StopSoundMem(playBGMHandle);
 		}
 
-		if (CheckSoundMem(gameClearHandle) == 1)
-		{
-			StopSoundMem(gameClearHandle);
-		}
-		
-		if (CheckSoundMem(gameOverHandle) == 1)
-		{
-			StopSoundMem(gameOverHandle);
-		}
-
 		playOnlyFlag = 0;
 
 		if (CheckSoundMem(titleBGMHandle) == 0)
@@ -54,6 +44,21 @@ void GameScene::Update()
 		otherScene->OtherSceneUpdate();
 		break;
 	case 1:	// ステージセレクト
+		if (CheckSoundMem(gameClearHandle) == 1)
+		{
+			StopSoundMem(gameClearHandle);
+		}
+
+		if (CheckSoundMem(gameOverHandle) == 1)
+		{
+			StopSoundMem(gameOverHandle);
+		}
+
+		if (CheckSoundMem(titleBGMHandle) == 0)
+		{
+			PlaySoundMem(titleBGMHandle, DX_PLAYTYPE_BACK, true);
+		}
+
 		player->playerReset();
 		enemy->enemyReset();
 		otherScene->OtherSceneUpdate();

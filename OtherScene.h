@@ -9,6 +9,7 @@ public: // ƒƒ“ƒoŠÖ”
 	void OtherSceneDraw();
 	int GetScene() { return scene; }
 	int TitleScene() { return scene = 0; }
+	int SelectScene() { return scene = 1; }
 	int GameOverScene() { return scene = 2; }
 	int GameClaerScene() { return scene = 3; }
 	int GetSelectScene() { return selectScene; }
