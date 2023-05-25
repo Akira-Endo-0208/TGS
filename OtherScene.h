@@ -17,6 +17,7 @@ private: // メンバ変数
 	// シーン切り替え
 	int scene = 0;
 	int selectScene = 4;
+	int selectFlag = 0;
 
 	// キーボード変数
 	char key[256] = { 0 }; //最新のキーボード情報用
