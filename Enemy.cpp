@@ -61,25 +61,10 @@ void Enemy::enemyMove()
 // リスポーン
 void Enemy::enemyBorn()
 {
-
-	for (int i = 0; i < 10; i++)
-
 	if (player->GetTutorialEnemyFlag() == 0)
-
 	{
-
-			enemy1Flag[i] = 1;
-			enemy1GraphTime[i] = 0;
-			enemy1Time[i] = 0;
-			enemy1Y[i] = 200 + rand() % 460;
-			if (player->GetRoundTripFlag() == 0)
-			{
-				enemy1X[i] = player->GetScrollX() + 1400 + rand() % 500;
-			}
-			else
-			{
-				enemy1X[i] = player->GetScrollX() - 300 + rand() % 500;
-
+		for (int i = 0; i < 1; i++)
+		{
 			if (enemy1Flag[i] == 0)
 			{
 				enemy1Flag[i] = 1;
@@ -94,11 +79,10 @@ void Enemy::enemyBorn()
 				{
 					enemy1X[i] = player->GetScrollX() - 300;
 				}
-
 			}
 		}
+	}
 }
-
 
 void Enemy::enemyMoveGraph()
 {

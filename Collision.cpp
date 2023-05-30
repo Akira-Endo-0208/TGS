@@ -21,13 +21,12 @@ void Collision::collisionPlayerEnemy()
 {
 	for (int i = 0; i < 10; i++)
 	{
-		
 		if (enemy->GetenemyFlag(i) == 1 && player->GetplayerFlag() == 1)
 		{
-			float dX = abs(enemy->GetenemyX(i) - player->GetPlayerX());
-			float dY = abs(enemy->GetenemyY(i) - player->GetPlayerY());
-			float dX2 = abs(enemy->GetenemyX(i) - (player->GetPlayerX() + 32));
-			float dY2 = abs(enemy->GetenemyY(i) - (player->GetPlayerY() + player->GetplayerSizeY()));
+			float dX = abs(enemy->GetenemyX(i) - player->GetplayerX());
+			float dY = abs(enemy->GetenemyY(i) - player->GetplayerY());
+			float dX2 = abs(enemy->GetenemyX(i) - (player->GetplayerX() + 32));
+			float dY2 = abs(enemy->GetenemyY(i) - (player->GetplayerY() + player->GetplayerSizeY()));
 			// ƒvƒŒƒCƒ„[‚Æ“G‚ª“–‚½‚Á‚½‚ç
 			if (dX < 32 && dY < 56 && dX2 < 32 && dY2 < 56)
 			{
@@ -72,7 +71,7 @@ void Collision::collisionPlayerBlock()
 
 void Collision::collisionPlayerClaer()
 {
-	if (player->GetplayerFlag() == 1 && player->GetPlayerX() <= 0 && player->GetRoundTripFlag() == 1)
+	if (player->GetplayerFlag() == 1 && player->GetplayerX() <= 0 && player->GetRoundTripFlag() == 1)
 	{
 		if (map->GetMapStageCount() == 4)
 		{
